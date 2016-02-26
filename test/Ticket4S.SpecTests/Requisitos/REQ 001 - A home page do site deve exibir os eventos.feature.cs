@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Ticket4S.SpecTests
+namespace Ticket4S.SpecTests.Requisitos
 {
     using TechTalk.SpecFlow;
     

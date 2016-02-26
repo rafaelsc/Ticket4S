@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Ticket4S.SpecTests
+namespace Ticket4S.SpecTests.Requisitos
 {
     using TechTalk.SpecFlow;
     
@@ -80,9 +80,26 @@ namespace Ticket4S.SpecTests
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.When("Entar na Pagina Principal do Site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+ testRunner.When("O Usuário selecionar um Evento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line 7
- testRunner.Then("o resultado deve conter uma lista de eventos disponiveis.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+ testRunner.Then("os detalhes do Evento devem ser exibidos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+#line 8
+ testRunner.And("os Tipos de Ingressos devem ser todos listados em conjunto com a informação se ai" +
+                    "nda estão disponiveis para compra.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 10
+ testRunner.When("o Usário escolher um Tipo de Ingresso disponível", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+#line 11
+ testRunner.And("o Usuário estiver deslogado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 12
+ testRunner.Then("ele será solicitado que se logue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+#line 13
+ testRunner.Then("ele irá confirmar a compra de ingresso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line 15
+ testRunner.When("o Usário escolher um Tipo de Ingresso disponível", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+#line 16
+ testRunner.And("o Usuário estiver logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 17
+ testRunner.Then("ele irá confirmar a compra de ingresso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{0171DB8C-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.Extensions", "src\Ticket4S.Extensions\Ticket4S.Extensions.csproj", "{07C491B1-2ECD-483C-A4CB-07C906ED319E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.Utils", "src\Ticket4S.Utils\Ticket4S.Utils.csproj", "{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{07C491B1-2ECD-483C-A4CB-07C906ED319E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07C491B1-2ECD-483C-A4CB-07C906ED319E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07C491B1-2ECD-483C-A4CB-07C906ED319E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{67DBC4EF-0628-464C-A967-6127F399E612} = {87124271-5765-4307-9E5A-8795E784E808}
 		{12378EF5-58A3-4AC2-BF8D-DF297F5940DC} = {87124271-5765-4307-9E5A-8795E784E808}
 		{07C491B1-2ECD-483C-A4CB-07C906ED319E} = {0171DB8C-E177-4AD4-9A39-8320E837B8F6}
+		{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE} = {0171DB8C-E177-4AD4-9A39-8320E837B8F6}
 	EndGlobalSection
 EndGlobal

@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.MundipaggService",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{0171DB8C-E177-4AD4-9A39-8320E837B8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.Extensions", "Ticket4S.Extensions\Ticket4S.Extensions.csproj", "{07C491B1-2ECD-483C-A4CB-07C906ED319E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.Extensions", "src\Ticket4S.Extensions\Ticket4S.Extensions.csproj", "{07C491B1-2ECD-483C-A4CB-07C906ED319E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

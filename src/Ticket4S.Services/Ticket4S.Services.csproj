@@ -57,10 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
-      <Project>{07c491b1-2ecd-483c-a4cb-07c906ed319e}</Project>
-      <Name>Ticket4S.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ticket4S.Entity.Querys\Ticket4S.Entity.Querys.csproj">
       <Project>{dce852af-8631-4d76-b331-dcff35176412}</Project>
       <Name>Ticket4S.Entity.Querys</Name>

@@ -79,16 +79,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\services\Ticket4S.MundipaggService\Ticket4S.MundipaggService.csproj">
-      <Project>{12378ef5-58a3-4ac2-bf8d-df297f5940dc}</Project>
-      <Name>Ticket4S.MundipaggService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Ticket4S.Services\Ticket4S.Services.csproj">
-      <Project>{814eb743-4f48-4283-8735-9834491adf54}</Project>
-      <Name>Ticket4S.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

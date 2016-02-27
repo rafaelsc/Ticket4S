@@ -15,7 +15,7 @@ namespace Ticket4S.Services.Pagamento.Model
 
         public EnderecoDeCobranca EnderecoDeCobranca { get; set; }
 
-        [Required]
+        [Required, Range(0.01D, double.MaxValue)]
         public decimal? Valor { get; set; }
     }
 

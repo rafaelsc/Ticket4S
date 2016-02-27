@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.Web", "src\Ticket4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.WebTests", "test\Ticket4S.WebTests\Ticket4S.WebTests.csproj", "{C4A74486-18EB-4E1E-A0C9-9FA4308995D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.MundipaggServiceTest", "test\Ticket4S.MundipaggServiceTest\Ticket4S.MundipaggServiceTest.csproj", "{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{C4A74486-18EB-4E1E-A0C9-9FA4308995D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A74486-18EB-4E1E-A0C9-9FA4308995D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A74486-18EB-4E1E-A0C9-9FA4308995D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,5 +99,6 @@ Global
 		{07C491B1-2ECD-483C-A4CB-07C906ED319E} = {0171DB8C-E177-4AD4-9A39-8320E837B8F6}
 		{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE} = {0171DB8C-E177-4AD4-9A39-8320E837B8F6}
 		{C4A74486-18EB-4E1E-A0C9-9FA4308995D2} = {893C5FCC-44D8-470A-A94D-C40437A4B66F}
+		{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA} = {893C5FCC-44D8-470A-A94D-C40437A4B66F}
 	EndGlobalSection
 EndGlobal

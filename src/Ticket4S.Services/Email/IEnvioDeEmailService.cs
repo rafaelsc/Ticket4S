@@ -4,9 +4,9 @@ using Ticket4S.Services.Email.Model;
 
 namespace Ticket4S.Services.Email
 {
-    public interface IEmailService
+    public interface IEnvioDeEmailService
     {
         [NotNull]
-        Task EnviarEmailAsync([NotNull] EMailAEnviar dadosDoEmail);
+        Task EnviarAsync([NotNull] EMailAEnviar dadosDoEmail);
     }
 }

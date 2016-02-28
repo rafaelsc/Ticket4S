@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SendGridEmailService.cs" />
+    <Compile Include="SendGridEnvioDeEmailService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">

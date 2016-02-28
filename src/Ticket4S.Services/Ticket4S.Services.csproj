@@ -81,7 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Email\IEmailService.cs" />
+    <Compile Include="Email\IEnvioDeEmailService.cs" />
     <Compile Include="Email\Model\EMailAEnviar.cs" />
     <Compile Include="Pagamento\IPagamentoService.cs" />
     <Compile Include="Pagamento\Model\CartaoDeCreditoModels.cs" />

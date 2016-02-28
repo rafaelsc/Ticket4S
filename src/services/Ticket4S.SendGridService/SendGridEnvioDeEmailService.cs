@@ -7,11 +7,11 @@ using Ticket4S.Services.Email.Model;
 
 namespace Ticket4S.SendGridService
 {
-    public class SendGridEmailService : IEmailService
+    public class SendGridEnvioDeEmailService : IEnvioDeEmailService
     {
         protected string ApiKey => ConfigurationManager.AppSettings["sendgrid:ApiKey"];
 
-        public Task EnviarEmailAsync(EMailAEnviar dadosDoEmail)
+        public Task EnviarAsync(EMailAEnviar dadosDoEmail)
         {
             var sendGridMessage = new SendGridMessage();
             sendGridMessage.AddTo(dadosDoEmail.EMailDestinatario);

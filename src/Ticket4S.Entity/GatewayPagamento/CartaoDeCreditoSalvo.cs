@@ -17,7 +17,7 @@ namespace Ticket4S.Entity.GatewayPagamento
         [Required]
         public Bandeira? Bandeira { get; set; }
 
-        [Required, StringLength(64)]
+        [Required, StringLength(24)]
         public string NumeroCartaoMascarado { get; set; }
 
         [ForeignKey(nameof(Usuario))]

@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+using AutoMapper;
 using GatewayApiClient.DataContracts;
 using Ticket4S.Extensions;
 using Ticket4S.Services.Pagamento.Model;
 
-namespace Ticket4S.MundipaggService
+namespace Ticket4S.MundipaggService.AutoMapper
 {
-    public class AutoMapperConfiguration : Profile
+    public class MundpaggGatewayMapperProfile : Profile
     {
         public override string ProfileName => "Gateway Pagamento Mundpagg";
 
@@ -40,7 +40,7 @@ namespace Ticket4S.MundipaggService
                 .ForMember(dest => dest.CreditCardOperation, exp => exp.Ignore())
                 .ForMember(dest => dest.TransactionReference, exp => exp.Ignore())
                 .ForMember(dest => dest.TransactionDateInMerchant, exp => exp.Ignore());
-                //.ForMember(dest => dest.CreditCard.BillingAddress, exp => exp.MapFrom(src => src.EnderecoDeCobranca));
+                //.ForMember(dest => dest.CreditCard.BillingAddress, exp => exp.MapFrom(src => src.EnderecoDeCobranca)); //TODO: Caso seja Requerido.
         }
     }
 }

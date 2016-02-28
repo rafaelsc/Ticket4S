@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Security;
 using AutoMapper;
 using FluentAssertions;
-using Serilog;
-using Serilog.Exceptions;
 using Ticket4S.Extensions;
 using Ticket4S.MundipaggService;
+using Ticket4S.MundipaggService.AutoMapper;
 using Ticket4S.Services.Pagamento;
 using Ticket4S.Services.Pagamento.Model;
 using Xunit;
@@ -20,7 +17,7 @@ namespace Ticket4S.ServicesTests
         
         public PagamentoServiceTest(ITestOutputHelper output) : base(output)
         {
-            var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperConfiguration>());
+            var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<MundpaggGatewayMapperProfile>());
             mapperConfig.AssertConfigurationIsValid();
 
             _mapper = mapperConfig.CreateMapper();

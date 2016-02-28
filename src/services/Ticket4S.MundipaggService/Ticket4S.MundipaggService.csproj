@@ -64,9 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\MundpaggGatewayMapperProfile.cs" />
     <Compile Include="MundpaggPagamentoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AutoMapperConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">

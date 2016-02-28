@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3BC678C7-2909-4A2A-B17F-C42C05B0F571}</ProjectGuid>
+    <ProjectGuid>{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ticket4S.SpecTests</RootNamespace>
-    <AssemblyName>Ticket4S.SpecTests</AssemblyName>
+    <RootNamespace>Ticket4S.CommonTest</RootNamespace>
+    <AssemblyName>Ticket4S.CommonTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -37,26 +37,6 @@
       <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.Testing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFrameworkTesting.1.2.0\lib\net45\EntityFramework.Testing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.Testing.Moq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFrameworkTesting.Moq.1.2.0\lib\net45\EntityFramework.Testing.Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FluentAssertions, Version=4.2.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.2.2\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -67,18 +47,6 @@
     </Reference>
     <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
@@ -94,7 +62,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
@@ -118,10 +85,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TechTalk.SpecFlow, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SpecFlow.2.0.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
       <Private>True</Private>
@@ -140,52 +103,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AHomePageDoSiteDeveExibirOsEventosSteps.cs" />
-    <Compile Include="OUsuarioPodeComprarIngressosParaUmEventosSteps.cs" />
+    <Compile Include="BaseTest.cs" />
+    <Compile Include="Email\FakeEmailService.cs" />
+    <Compile Include="Pagamento\FailFakePagamentoService.cs" />
+    <Compile Include="Pagamento\SuceessFakePagamentoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requisitos\REQ 001 - A home page do site deve exibir os eventos.feature.cs">
-      <DependentUpon>REQ 001 - A home page do site deve exibir os eventos.feature</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Requisitos\REQ 002 - O usuário pode comprar ingressos para os eventos.feature.cs">
-      <DependentUpon>REQ 002 - O usuário pode comprar ingressos para os eventos.feature</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Ticket4S.Entity.Querys\Ticket4S.Entity.Querys.csproj">
-      <Project>{dce852af-8631-4d76-b331-dcff35176412}</Project>
-      <Name>Ticket4S.Entity.Querys</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\src\Ticket4S.Entity\Ticket4S.Entity.csproj">
       <Project>{c11c7aac-1864-4e33-87fe-a69b0dc67364}</Project>
       <Name>Ticket4S.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
+      <Project>{07c491b1-2ecd-483c-a4cb-07c906ed319e}</Project>
+      <Name>Ticket4S.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Ticket4S.Services\Ticket4S.Services.csproj">
       <Project>{814eb743-4f48-4283-8735-9834491adf54}</Project>
       <Name>Ticket4S.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ticket4S.CommonTest\Ticket4S.CommonTest.csproj">
-      <Project>{e4b31ac5-4d9f-4497-a3c8-1ba25f0222a8}</Project>
-      <Name>Ticket4S.CommonTest</Name>
+    <ProjectReference Include="..\..\src\Ticket4S.Utils\Ticket4S.Utils.csproj">
+      <Project>{50f496ed-7330-4f6f-a5c3-ce5a3a5638fe}</Project>
+      <Name>Ticket4S.Utils</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="Requisitos\REQ 001 - A home page do site deve exibir os eventos.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>REQ 001 - A home page do site deve exibir os eventos.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Requisitos\REQ 002 - O usuário pode comprar ingressos para os eventos.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>REQ 002 - O usuário pode comprar ingressos para os eventos.feature.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

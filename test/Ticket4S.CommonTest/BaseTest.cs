@@ -4,7 +4,7 @@ using Serilog;
 using Serilog.Exceptions;
 using Xunit.Abstractions;
 
-namespace Ticket4S.ServicesTests
+namespace Ticket4S.CommonTest
 {
     public abstract class BaseTest
     {

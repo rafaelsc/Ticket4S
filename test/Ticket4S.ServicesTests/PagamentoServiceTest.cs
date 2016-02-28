@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using FluentAssertions;
+using Ticket4S.CommonTest;
 using Ticket4S.Extensions;
 using Ticket4S.MundipaggService;
 using Ticket4S.MundipaggService.AutoMapper;
@@ -71,7 +72,7 @@ namespace Ticket4S.ServicesTests
                     ExpiracaoMes = 06,
                     ExpiracaoAno = 2020,
                 },
-                Valor = 10021211154854.84M
+                Valor = 10021.84M
             };
 
             // Act

@@ -103,7 +103,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTest.cs" />
     <Compile Include="PagamentoServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -131,6 +130,10 @@
     <ProjectReference Include="..\..\src\Ticket4S.Utils\Ticket4S.Utils.csproj">
       <Project>{50f496ed-7330-4f6f-a5c3-ce5a3a5638fe}</Project>
       <Name>Ticket4S.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.CommonTest\Ticket4S.CommonTest.csproj">
+      <Project>{e4b31ac5-4d9f-4497-a3c8-1ba25f0222a8}</Project>
+      <Name>Ticket4S.CommonTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

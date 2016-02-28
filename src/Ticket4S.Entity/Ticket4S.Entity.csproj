@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Evento\Evento.cs" />
+    <Compile Include="Evento\Local.cs" />
+    <Compile Include="Evento\TipoDeIngressoDoEvento.cs" />
     <Compile Include="Geo\Cidade.cs" />
     <Compile Include="Geo\Bairro.cs" />
     <Compile Include="Geo\UF.cs" />
@@ -78,9 +81,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Evento\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

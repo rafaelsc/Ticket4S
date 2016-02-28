@@ -17,6 +17,10 @@ namespace Ticket4S.Entity.Evento
         [Required, Range(0.01d, 1000000d)] //1 Milhao
         public decimal Valor { get; set; } = 0M;
 
+        public virtual byte OrdemDeExibicao { get; set; }
+
+        public virtual bool Habilitado { get; set; } = true;
+
         [Required]
         [ForeignKey(nameof(Evento))]
         public virtual string EventoId { get; set; }

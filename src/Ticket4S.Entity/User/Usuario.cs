@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Ticket4S.Entity.GatewayPagamento;
 
 namespace Ticket4S.Entity.User
 {
@@ -25,6 +27,8 @@ namespace Ticket4S.Entity.User
 
         [Required]
         public virtual Endereco Endereco { get; set; }
+        
+        public ICollection<CartaoDeCreditoSalvo> CartaoDeCreditoSalvoes { get; protected set; } = new List<CartaoDeCreditoSalvo>();
 
 
         [Timestamp, Column("_rowVersion")]

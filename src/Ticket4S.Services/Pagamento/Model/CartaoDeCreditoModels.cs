@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security;
 using JetBrains.Annotations;
+using Ticket4S.Entity;
+using Ticket4S.Entity.User;
 
 namespace Ticket4S.Services.Pagamento.Model
 {
@@ -28,6 +30,8 @@ namespace Ticket4S.Services.Pagamento.Model
     {
         [Required]
         public string NomeDoDono { get; set; }
+
+        [DataType(DataType.CreditCard)]
         [Required]
         public SecureString Numero { get; set; }
 
@@ -46,22 +50,7 @@ namespace Ticket4S.Services.Pagamento.Model
         public override string ToString() => $"Bandeira: {Bandeira}, NomeDoDono: {NomeDoDono}";
     }
 
-    public enum Bandeira
-    {
-        Visa = 1,
-        Mastercard = 2,
-        Hipercard = 3,
-        Amex = 4,
-        Diners = 5,
-        Elo = 6,
-        Aura = 7,
-        Discover = 8,
-        CasaShow = 9,
-        Havan = 10,
-        HugCard = 11,
-        AndarAki = 12,
-        LeaderCard = 13
-    }
+    
 
     public class EnderecoDeCobranca
     {

@@ -11,6 +11,7 @@ using AutoMapper;
 using GatewayApiClient;
 using GatewayApiClient.DataContracts;
 using GatewayApiClient.DataContracts.EnumTypes;
+using Serilog;
 using Ticket4S.Services.Pagamento;
 using Ticket4S.Services.Pagamento.Model;
 
@@ -18,10 +19,12 @@ namespace Ticket4S.MundipaggService
 {
     public class MundpaggPagamentoService : IPagamentoService
     {
+        private ILogger Log { get; }
         private IMapper Mapper { get; }
 
-        public MundpaggPagamentoService(IMapper mapper)
+        public MundpaggPagamentoService(IMapper mapper, ILogger log)
         {
+            Log = log.ForContext<MundpaggPagamentoService>();
             Mapper = mapper;
         }
 
@@ -29,7 +32,7 @@ namespace Ticket4S.MundipaggService
         {
             Contract.Requires(dadosDaCobranca != null);
             Contract.Ensures(Contract.Result<ResultadoDoPagamento>() != null);
-
+            Log.Information("Iniciada cobrança no Cartao de Credito");
 
             var dadosDaTransacaoDeCartao = Mapper.Map<CreditCardTransaction>(dadosDaCobranca);
             var requestData = new CreateSaleRequest()
@@ -41,16 +44,43 @@ namespace Ticket4S.MundipaggService
                 }
             };
 
-            var client = new GatewayServiceClient();
-            var response = client.Sale.Create(requestData);
+            Log.Debug("Dados Cartao de Credito. {dadosDaCobranca}", dadosDaCobranca);
 
-            var pedidoCriado = response.HttpStatusCode == HttpStatusCode.Created;
-            var sucesso = pedidoCriado && (response.Response?.CreditCardTransactionResultCollection.All(t => t.Success) ?? false);
-            var idDoPedido = response.Response?.OrderResult?.OrderKey.ToString();
-            var messagem = ObterMensagem(erroFoiDeValidacaoDeDados: pedidoCriado == false, respostaDoGateway: response.Response); //TODO
-            var rawData = response.RawResponse;
+            try
+            {
+                Log.Debug("Criando Client do Gateway de Pagamentos");
+                var client = new GatewayServiceClient();
 
-            return new ResultadoDoPagamento(sucesso, idDoPedido, messagem, rawData);
+                Log.Debug("Enviando dados de Cobrança para o Gateway");
+                var response = client.Sale.Create(requestData);
+                Log.Debug("Enviando dados de Cobrança para o Gateway - Finaliazado");
+
+
+                var pedidoCriado = response.HttpStatusCode == HttpStatusCode.Created;
+                var sucesso = pedidoCriado && (response.Response?.CreditCardTransactionResultCollection.All(t => t.Success) ?? false);
+                var idDoPedido = response.Response?.OrderResult?.OrderKey.ToString();
+                var messagem = ObterMensagem(erroFoiDeValidacaoDeDados: pedidoCriado == false, respostaDoGateway: response.Response); //TODO
+                var rawData = response.RawResponse;
+
+                var resultado = new ResultadoDoPagamento(sucesso, idDoPedido, messagem, rawData);
+                Log.Debug("Resultado da Cobranca, {ResultadoDoPagamento}", resultado);
+
+                if (resultado.PagamentoCobradoComSucesso)
+                {
+                    Log.Information("Cobrança no Cartao de Credito realizada com Sucesso.");
+                }
+                else
+                {
+                    Log.Error("Erro durante a cobrança de cartão de credito. Cobrança não realizada. {mensagem}", messagem);
+                }
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erro GRAVE INTERNO durante a cobrança de cartão de credito. Cobrança não realizada.");
+                return new ResultadoDoPagamento(false, null, "ERRO Interno do Sistema", ex.Message);
+            }
         }
 
         private static string ObterMensagem(bool erroFoiDeValidacaoDeDados, CreateSaleResponse respostaDoGateway)

@@ -3,24 +3,28 @@ using System.Linq;
 using System.Security;
 using AutoMapper;
 using FluentAssertions;
+using Serilog;
+using Serilog.Exceptions;
 using Ticket4S.Extensions;
 using Ticket4S.MundipaggService;
 using Ticket4S.Services.Pagamento;
 using Ticket4S.Services.Pagamento.Model;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Ticket4S.ServicesTests
 {
-    public class PagamentoServiceTest
+    public class PagamentoServiceTest: BaseTest
     {
         private readonly IMapper _mapper;
         
-        public PagamentoServiceTest()
+        public PagamentoServiceTest(ITestOutputHelper output) : base(output)
         {
             var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperConfiguration>());
             mapperConfig.AssertConfigurationIsValid();
 
             _mapper = mapperConfig.CreateMapper();
+
         }
 
         [Fact]
@@ -43,7 +47,7 @@ namespace Ticket4S.ServicesTests
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper);
+            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
             var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
 
             // Assert
@@ -74,7 +78,7 @@ namespace Ticket4S.ServicesTests
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper);
+            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
             var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
 
             // Assert
@@ -105,7 +109,7 @@ namespace Ticket4S.ServicesTests
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper);
+            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
             var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
 
             // Assert
@@ -136,7 +140,7 @@ namespace Ticket4S.ServicesTests
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper);
+            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
             var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
 
             // Assert
@@ -168,7 +172,7 @@ namespace Ticket4S.ServicesTests
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper);
+            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
             var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
 
             // Assert

@@ -7,6 +7,7 @@ namespace Ticket4S.Services.Pagamento.Model
 {
     public class CobrancaViaCartaoDeCredito
     {
+        [Key]
         [Required]
         public Guid Id { get; set; } = Guid.NewGuid();
 
@@ -15,6 +16,7 @@ namespace Ticket4S.Services.Pagamento.Model
 
         public EnderecoDeCobranca EnderecoDeCobranca { get; set; }
 
+        [DataType(DataType.Currency)]
         [Required, Range(typeof(decimal), "0", "100000")]
         public decimal? Valor { get; set; }
 

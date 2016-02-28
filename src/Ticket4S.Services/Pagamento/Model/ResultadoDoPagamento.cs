@@ -17,5 +17,8 @@ namespace Ticket4S.Services.Pagamento.Model
         public string MessagemDeRespostaDaOperacao { get; }
 
         public string DebugRawData { get; }
+
+
+        public override string ToString() => $"PagamentoCobradoComSucesso: {PagamentoCobradoComSucesso}, IdDoPedidoNoSistemaDePagamento: {IdDoPedidoNoSistemaDePagamento}, MessagemDeRespostaDaOperacao: {MessagemDeRespostaDaOperacao}";
     }
 }

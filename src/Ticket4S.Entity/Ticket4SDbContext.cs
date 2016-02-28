@@ -11,7 +11,10 @@ namespace Ticket4S.Entity
     {
         //Evento
         public virtual DbSet<Evento.Evento> Evento { get; set; }
-        public virtual DbSet<Local> LocalDeEvento { get; set; }
+        public virtual DbSet<Local> LocaisDeEventos { get; set; }
+
+        //Compra
+        public virtual DbSet<Local> PedidosDeCompras { get; set; }
 
         //GatwayPagemento
         public virtual DbSet<CartaoDeCreditoSalvo> CartaoDeCreditoSalvo { get; set; }

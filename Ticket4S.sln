@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solutio
 		secrets.config = secrets.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.CommonTest", "Test\Ticket4S.CommonTest\Ticket4S.CommonTest.csproj", "{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{45973117-2C9F-4C3F-8E01-A28938A0308E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45973117-2C9F-4C3F-8E01-A28938A0308E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45973117-2C9F-4C3F-8E01-A28938A0308E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +118,6 @@ Global
 		{C4A74486-18EB-4E1E-A0C9-9FA4308995D2} = {893C5FCC-44D8-470A-A94D-C40437A4B66F}
 		{4ECAB8FD-23F0-44A9-8B30-BFC934E370AA} = {893C5FCC-44D8-470A-A94D-C40437A4B66F}
 		{45973117-2C9F-4C3F-8E01-A28938A0308E} = {893C5FCC-44D8-470A-A94D-C40437A4B66F}
+		{E4B31AC5-4D9F-4497-A3C8-1BA25F0222A8} = {893C5FCC-44D8-470A-A94D-C40437A4B66F}
 	EndGlobalSection
 EndGlobal

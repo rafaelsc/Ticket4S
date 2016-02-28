@@ -17,7 +17,7 @@ namespace Ticket4S.Services.Pagamento.Model
         public EnderecoDeCobranca EnderecoDeCobranca { get; set; }
 
         [DataType(DataType.Currency)]
-        [Required, Range(typeof(decimal), "0", "100000")]
+        [Required, Range(typeof(decimal), "0", "1000000")] //1 Milhao
         public decimal? Valor { get; set; }
 
 

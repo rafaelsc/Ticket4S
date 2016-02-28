@@ -14,6 +14,7 @@ using GatewayApiClient.DataContracts.EnumTypes;
 using Serilog;
 using Ticket4S.Services.Pagamento;
 using Ticket4S.Services.Pagamento.Model;
+using Ticket4S.Utils;
 
 namespace Ticket4S.MundipaggService
 {
@@ -32,6 +33,8 @@ namespace Ticket4S.MundipaggService
         {
             Contract.Requires(dadosDaCobranca != null);
             Contract.Ensures(Contract.Result<ResultadoDoPagamento>() != null);
+            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(dadosDaCobranca), dadosDaCobranca);
+
             Log.Information("Iniciada cobrança no Cartao de Credito");
 
             var dadosDaTransacaoDeCartao = Mapper.Map<CreditCardTransaction>(dadosDaCobranca);

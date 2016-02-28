@@ -7,7 +7,7 @@ namespace Ticket4S.Utils
 {
     public static class ValidatorHelper
     {
-        public static void ThrowesIfNotValid(string paramName, object objectToValidate)
+        public static void ThrowesIfHasDataAnnotationErro(string paramName, object objectToValidate)
         {
             if(!TryValidate(objectToValidate))
                 throw new ArgumentException("Validacao dos dados do Paramentro Invalida.", paramName); //TODO: Validar melhor, Informar detalhes do erro na mensagem //TODO: Fix Typo

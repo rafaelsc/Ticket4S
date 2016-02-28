@@ -81,6 +81,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\IEmailService.cs" />
+    <Compile Include="Email\Model\EMailAEnviar.cs" />
     <Compile Include="Pagamento\IPagamentoService.cs" />
     <Compile Include="Pagamento\Model\CartaoDeCreditoModels.cs" />
     <Compile Include="Pagamento\Model\ResultadoDoPagamento.cs" />
@@ -95,11 +97,16 @@
       <Project>{c11c7aac-1864-4e33-87fe-a69b0dc67364}</Project>
       <Name>Ticket4S.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.Utils\Ticket4S.Utils.csproj">
+      <Project>{50F496ED-7330-4F6F-A5C3-CE5A3A5638FE}</Project>
+      <Name>Ticket4S.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -21,6 +21,6 @@ namespace Ticket4S.Entity.Geo
         public string UFId { get; set; }
         public virtual UF UF { get; set; }
 
-        public virtual ICollection<Bairro> Neighborhoods { get; set; }
+        public virtual ICollection<Bairro> Neighborhoods { get; protected set; } = new List<Bairro>();
     }
 }

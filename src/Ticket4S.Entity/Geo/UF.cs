@@ -22,6 +22,6 @@ namespace Ticket4S.Entity.Geo
         [Required]
         public string ContryIsoCode { get; set; }
 
-        public virtual ICollection<Cidade> Cidades { get; set; }
+        public virtual ICollection<Cidade> Cidades { get; protected set; } = new List<Cidade>();
     }
 }

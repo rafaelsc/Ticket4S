@@ -37,6 +37,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.MundipaggServiceTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket4S.ServicesTests", "test\Ticket4S.ServicesTests\Ticket4S.ServicesTests.csproj", "{45973117-2C9F-4C3F-8E01-A28938A0308E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{0586E86E-D078-4722-AF7F-004CAAD06546}"
+	ProjectSection(SolutionItems) = preProject
+		secrets.config = secrets.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

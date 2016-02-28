@@ -83,6 +83,8 @@
   <ItemGroup>
     <Compile Include="Email\IEnvioDeEmailService.cs" />
     <Compile Include="Email\Model\EMailAEnviar.cs" />
+    <Compile Include="Notificacao\INotificarCompraRealizadaService.cs" />
+    <Compile Include="Notificacao\Model\MotivoRecusa.cs" />
     <Compile Include="Pagamento\IPagamentoService.cs" />
     <Compile Include="Pagamento\Model\CartaoDeCreditoModels.cs" />
     <Compile Include="Pagamento\Model\ResultadoDoPagamento.cs" />

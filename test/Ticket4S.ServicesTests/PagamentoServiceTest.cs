@@ -2,6 +2,7 @@
 using AutoMapper;
 using FluentAssertions;
 using Ticket4S.CommonTest;
+using Ticket4S.Entity;
 using Ticket4S.Extensions;
 using Ticket4S.MundipaggService;
 using Ticket4S.MundipaggService.AutoMapper;
@@ -119,7 +120,7 @@ namespace Ticket4S.ServicesTests
         }
 
         [Fact]
-        public void CobrancaNoCartaoFaltandoDados1()
+        public void CobrancaNoCartaoFaltandoSemPassarValor()
         {
             // Arrange
             var cobrancaData = new CobrancaViaCartaoDeCredito()
@@ -134,7 +135,33 @@ namespace Ticket4S.ServicesTests
                     ExpiracaoMes = 06,
                     ExpiracaoAno = 2020,
                 },
-                Valor = 0M
+                //Valor = 0.10M
+            };
+
+            // Act
+            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => pagamentoService.PagarComCartaoDeCredito(cobrancaData));
+        }
+
+        [Fact]
+        public void CobrancaNoCartaoFaltandoDados1()
+        {
+            // Arrange
+            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            {
+                Id = Guid.NewGuid(),
+                CartaoDeCredito = new CartaoDeCredito()
+                {
+                    Bandeira = Bandeira.Mastercard,
+                    NomeDoDono = "Astrogildo Silcva",
+                    Numero = "".ToSecureString(),
+                    CodigoDeSeguranca = "321".ToSecureString(),
+                    ExpiracaoMes = 06,
+                    ExpiracaoAno = 2020,
+                },
+                Valor = 0.10M
             };
 
             // Act
@@ -147,7 +174,7 @@ namespace Ticket4S.ServicesTests
             result.PagamentoCobradoComSucesso.Should().BeFalse();
             result.IdDoPedidoNoSistemaDePagamento.Should().BeNull();
             result.MessagemDeRespostaDaOperacao.Should().NotBeNullOrWhiteSpace();
-            result.MessagemDeRespostaDaOperacao.Should().Be("O valor da transação deve ser maior que zero.");
+            result.MessagemDeRespostaDaOperacao.Should().Be("O número do cartão deve ter no mínimo 10 dígitos e no máximo 24 digitos.");
         }
 
         [Fact]

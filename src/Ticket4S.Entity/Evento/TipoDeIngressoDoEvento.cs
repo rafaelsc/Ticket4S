@@ -23,7 +23,7 @@ namespace Ticket4S.Entity.Evento
 
         [Required]
         [ForeignKey(nameof(Evento))]
-        public virtual string EventoId { get; set; }
+        public virtual Guid? EventoId { get; set; }
         public virtual Evento Evento { get; set; }
 
         [Timestamp, Column("_rowVersion")]

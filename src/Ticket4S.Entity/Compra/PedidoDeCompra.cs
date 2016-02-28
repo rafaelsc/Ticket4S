@@ -29,12 +29,12 @@ namespace Ticket4S.Entity.Compra
 
         [Index]
         [ForeignKey(nameof(EventoAdquirido))]
-        public virtual string EventoAdquiridoId { get; set; }
+        public virtual Guid? EventoAdquiridoId { get; set; }
         public virtual Evento.Evento EventoAdquirido { get; set; }
 
 
         [ForeignKey(nameof(IngressoAdquirido))]
-        public virtual string IngressoAdquiridoId { get; set; }
+        public virtual Guid? IngressoAdquiridoId { get; set; }
         public virtual TipoDeIngressoDoEvento IngressoAdquirido { get; set; }
 
         [DataType(DataType.Currency)]

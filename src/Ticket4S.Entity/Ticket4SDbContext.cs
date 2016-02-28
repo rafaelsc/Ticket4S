@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Ticket4S.Entity.Compra;
 using Ticket4S.Entity.Evento;
 using Ticket4S.Entity.GatewayPagamento;
 using Ticket4S.Entity.Geo;
@@ -14,7 +15,7 @@ namespace Ticket4S.Entity
         public virtual DbSet<Local> LocaisDeEventos { get; set; }
 
         //Compra
-        public virtual DbSet<Local> PedidosDeCompras { get; set; }
+        public virtual DbSet<PedidoDeCompra> PedidosDeCompras { get; set; }
 
         //GatwayPagemento
         public virtual DbSet<CartaoDeCreditoSalvo> CartaoDeCreditoSalvo { get; set; }

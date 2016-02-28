@@ -40,10 +40,6 @@ namespace Ticket4S.Entity.User
         public virtual string ComplementoDaRua { get; set; }
 
 
-        [ForeignKey(nameof(Usuario))]
-        public virtual string UsuarioId { get; set; }
-        public virtual Usuario Usuario { get; set; }
-
         [Timestamp, Column("_rowVersion")]
         public virtual byte[] RowVersion { get; set; }
     }

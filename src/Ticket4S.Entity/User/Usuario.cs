@@ -25,7 +25,9 @@ namespace Ticket4S.Entity.User
         [Required]
         public virtual Sexo Sexo { get; set; }
 
-        [Required]
+        //[Required]
+        [ForeignKey(nameof(Endereco))]
+        public virtual Guid? EnderecoId { get; set; }
         public virtual Endereco Endereco { get; set; }
         
         public ICollection<CartaoDeCreditoSalvo> CartaoDeCreditoSalvoes { get; protected set; } = new List<CartaoDeCreditoSalvo>();

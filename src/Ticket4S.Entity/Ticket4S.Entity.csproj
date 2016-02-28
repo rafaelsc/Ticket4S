@@ -75,6 +75,11 @@
     <Compile Include="Geo\Cidade.cs" />
     <Compile Include="Geo\Bairro.cs" />
     <Compile Include="Geo\UF.cs" />
+    <Compile Include="Migrations\201602282333140_BaseInicial.cs" />
+    <Compile Include="Migrations\201602282333140_BaseInicial.Designer.cs">
+      <DependentUpon>201602282333140_BaseInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket4SDbContext.cs" />
     <Compile Include="User\Endereco.cs" />
@@ -85,7 +90,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602282333140_BaseInicial.resx">
+      <DependentUpon>201602282333140_BaseInicial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

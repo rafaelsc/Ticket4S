@@ -65,11 +65,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geo\Cidade.cs" />
+    <Compile Include="Geo\Bairro.cs" />
+    <Compile Include="Geo\UF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ticket4SDbContext.cs" />
+    <Compile Include="User\Endereco.cs" />
+    <Compile Include="User\Usuario.cs" />
+    <Compile Include="User\Sexo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Evento\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -44,41 +44,33 @@ namespace Ticket4S.MundipaggService
             var client = new GatewayServiceClient();
             var response = client.Sale.Create(requestData);
 
-            var sucesso = response.HttpStatusCode == HttpStatusCode.Created && VerificarTransacao(response.Response);
+            var pedidoCriado = response.HttpStatusCode == HttpStatusCode.Created;
+            var sucesso = pedidoCriado && (response.Response?.CreditCardTransactionResultCollection.All(t => t.Success) ?? false);
             var idDoPedido = response.Response?.OrderResult?.OrderKey.ToString();
-            var messagem = ""; //TODO
+            var messagem = ObterMensagem(erroFoiDeValidacaoDeDados: pedidoCriado == false, respostaDoGateway: response.Response); //TODO
             var rawData = response.RawResponse;
 
-
             return new ResultadoDoPagamento(sucesso, idDoPedido, messagem, rawData);
-
-            var createSaleResponse = response.Response;
-            if (response.HttpStatusCode == HttpStatusCode.Created)
-            {
-                foreach (var creditCardTransaction in createSaleResponse.CreditCardTransactionResultCollection)
-                {
-                    Debug.WriteLine(creditCardTransaction.AcquirerMessage);
-                }
-            }
-            else {
-                if (createSaleResponse.ErrorReport != null)
-                {
-                    foreach (var errorItem in createSaleResponse.ErrorReport.ErrorItemCollection)
-                    {
-                        Debug.WriteLine(@"$Error {0}: {1}", errorItem.ErrorCode, errorItem.Description);
-                    }
-                }
-            }
         }
 
-        private static bool VerificarTransacao(CreateSaleResponse response)
+        private static string ObterMensagem(bool erroFoiDeValidacaoDeDados, CreateSaleResponse respostaDoGateway)
         {
-            if (response == null)
-                return false;
+            return erroFoiDeValidacaoDeDados ? ObterMensagemDeErro(respostaDoGateway) : ObterMensagemDaTransacaoFinanceira(respostaDoGateway);
+        }
 
-            //var todosOsResultacomComSucesso = response.CreditCardTransactionResultCollection.Any(t => t.CreditCardTransactionStatus != CreditCardTransactionStatusEnum.Captured);
-            var todosOsResultacomComSucesso = response.CreditCardTransactionResultCollection.All(t => t.Success);
-            return todosOsResultacomComSucesso;
+        private static string ObterMensagemDeErro(CreateSaleResponse respostaDoGateway)
+        {
+            var str = from errorItem in respostaDoGateway.ErrorReport.ErrorItemCollection
+                      select errorItem.Description;
+
+            return string.Join(", ", str);
+        }
+
+        private static string ObterMensagemDaTransacaoFinanceira(CreateSaleResponse respostaDoGateway)
+        {
+            var str = from transacao in respostaDoGateway.CreditCardTransactionResultCollection
+                      select transacao.AcquirerMessage;
+            return string.Join(", ", str);
         }
     }
 }

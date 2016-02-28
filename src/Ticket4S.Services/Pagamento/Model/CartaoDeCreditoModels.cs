@@ -15,8 +15,11 @@ namespace Ticket4S.Services.Pagamento.Model
 
         public EnderecoDeCobranca EnderecoDeCobranca { get; set; }
 
-        [Required, Range(0.01D, double.MaxValue)]
+        [Required, Range(typeof(decimal), "0", "100000")]
         public decimal? Valor { get; set; }
+
+
+        public override string ToString() => $"Id: {Id}, CartaoDeCredito: {CartaoDeCredito}, Valor: {Valor}";
     }
 
     public class CartaoDeCredito
@@ -36,6 +39,9 @@ namespace Ticket4S.Services.Pagamento.Model
 
         [Required]
         public Bandeira? Bandeira { get; set; }
+
+
+        public override string ToString() => $"Bandeira: {Bandeira}, NomeDoDono: {NomeDoDono}";
     }
 
     public enum Bandeira
@@ -65,5 +71,8 @@ namespace Ticket4S.Services.Pagamento.Model
         public string Numero { get; set; }
         public string Complemento { get; set; }
         public string CEP { get; set; }
+
+
+        public override string ToString() => $"Pais: {Pais}, UF: {UF}, Cidade: {Cidade}, Bairro: {Bairro}, Rua: {Rua}, Numero: {Numero}, Complemento: {Complemento}, CEP: {CEP}";
     }
 }

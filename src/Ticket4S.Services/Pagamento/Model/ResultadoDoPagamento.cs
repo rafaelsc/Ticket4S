@@ -2,20 +2,20 @@ namespace Ticket4S.Services.Pagamento.Model
 {
     public class ResultadoDoPagamento
     {
-        public ResultadoDoPagamento(bool sucesso, string idDoPedido, string messagem, string rawData)
+        public ResultadoDoPagamento(bool pagamentoCobradoComSucesso, string idDoPedidoNoSistemaDePagamento, string messagemDeRespostaDaOperacao, string debugRawData)
         {
-            Sucesso = sucesso;
-            IdDoPedido = idDoPedido;
-            Messagem = messagem;
-            RawData = rawData;
+            PagamentoCobradoComSucesso = pagamentoCobradoComSucesso;
+            IdDoPedidoNoSistemaDePagamento = idDoPedidoNoSistemaDePagamento;
+            MessagemDeRespostaDaOperacao = messagemDeRespostaDaOperacao;
+            DebugRawData = debugRawData;
         }
 
-        public bool Sucesso { get; }
+        public bool PagamentoCobradoComSucesso { get; }
 
-        public string IdDoPedido { get; }
+        public string IdDoPedidoNoSistemaDePagamento { get; }
 
-        public string Messagem { get; }
+        public string MessagemDeRespostaDaOperacao { get; }
 
-        public string RawData { get; }
+        public string DebugRawData { get; }
     }
 }

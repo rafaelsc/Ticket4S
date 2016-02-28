@@ -65,12 +65,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventoQuerys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GeoQuerys.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ticket4S.Entity\Ticket4S.Entity.csproj">
       <Project>{c11c7aac-1864-4e33-87fe-a69b0dc67364}</Project>
       <Name>Ticket4S.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
+      <Project>{07c491b1-2ecd-483c-a4cb-07c906ed319e}</Project>
+      <Name>Ticket4S.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.Utils\Ticket4S.Utils.csproj">
+      <Project>{50f496ed-7330-4f6f-a5c3-ce5a3a5638fe}</Project>
+      <Name>Ticket4S.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

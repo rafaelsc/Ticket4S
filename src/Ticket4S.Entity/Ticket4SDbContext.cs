@@ -1,17 +1,16 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Ticket4S.Entity;
 using Ticket4S.Entity.Evento;
 using Ticket4S.Entity.GatewayPagamento;
-using Ticket4S.Entity.User;
 using Ticket4S.Entity.Geo;
+using Ticket4S.Entity.User;
 
-namespace Ticket4S.Web.Models
+namespace Ticket4S.Entity
 {
     public class Ticket4SDbContext : IdentityDbContext<Usuario>
     {
         //Evento
-        public virtual DbSet<Evento> Evento { get; set; }
+        public virtual DbSet<Evento.Evento> Evento { get; set; }
         public virtual DbSet<Local> LocalDeEvento { get; set; }
 
         //GatwayPagemento

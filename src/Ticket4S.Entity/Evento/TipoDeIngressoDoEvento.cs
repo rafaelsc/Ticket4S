@@ -14,7 +14,7 @@ namespace Ticket4S.Entity.Evento
         public virtual string Nome { get; set; }
 
         [DataType(DataType.Currency)]
-        [Required, Range(typeof(decimal), "0", "1000000")] //1 Milhao
+        [Required, Range(0.01d, 1000000d)] //1 Milhao
         public decimal Valor { get; set; } = 0M;
 
         [Required]

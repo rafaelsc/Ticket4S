@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Ticket4S.Entity;
 using Ticket4S.Entity.User;
 using Ticket4S.Web.Models;
 

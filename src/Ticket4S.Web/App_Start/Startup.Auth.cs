@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using Ticket4S.Entity;
 using Ticket4S.Entity.User;
 using Ticket4S.Web.Models;
 

@@ -69,6 +69,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Ticket4S.Entity\Ticket4S.Entity.csproj">
+      <Project>{C11C7AAC-1864-4E33-87FE-A69B0DC67364}</Project>
+      <Name>Ticket4S.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
       <Project>{07c491b1-2ecd-483c-a4cb-07c906ed319e}</Project>
       <Name>Ticket4S.Extensions</Name>

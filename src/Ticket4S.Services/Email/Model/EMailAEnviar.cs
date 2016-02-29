@@ -16,5 +16,8 @@ namespace Ticket4S.Services.Email.Model
         public string Assunto { get; set; }
         [Required]
         public string Corpo { get; set; }
+
+
+        public override string ToString() => $"EMailDestinatario: {EMailDestinatario}, Assunto: {Assunto}";
     }
 }

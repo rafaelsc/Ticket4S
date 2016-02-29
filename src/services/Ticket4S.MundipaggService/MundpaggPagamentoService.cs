@@ -81,7 +81,7 @@ namespace Ticket4S.MundipaggService
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Erro GRAVE INTERNO durante a cobrança de cartão de credito. Cobrança não realizada.");
+                Log.Error(ex, "Erro GRAVE INTERNO durante a cobrança de cartão de credito. Cobrança não realizada. {Exception}", ex);
                 return new ResultadoDoPagamento(false, null, "ERRO Interno do Sistema", ex.Message);
             }
         }

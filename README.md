@@ -15,7 +15,7 @@ E até me possibilitou de usar Libs que tinha pouca experiência, como xUnit, Se
 - Asp.Net WebApi 5 (REST)
 - Asp.Net Identity 2 (Autenticação)
 - EntityFramework 6 (ORM)
-- EntityFramework 6 Migration
+- EntityFramework 6 Migrations
 - Serilog (Logging)
 - xUnit (Test)
 - SpeckFlow (Test)

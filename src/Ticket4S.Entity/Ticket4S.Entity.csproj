@@ -95,6 +95,12 @@
       <DependentUpon>201602282333140_BaseInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
+      <Project>{07C491B1-2ECD-483C-A4CB-07C906ED319E}</Project>
+      <Name>Ticket4S.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

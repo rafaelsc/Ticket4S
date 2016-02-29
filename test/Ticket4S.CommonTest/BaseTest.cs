@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reactive.Linq;
 using Serilog;
+using Serilog.Events;
 using Serilog.Exceptions;
 using Xunit.Abstractions;
 
@@ -17,7 +18,7 @@ namespace Ticket4S.CommonTest
 
             Log = new LoggerConfiguration()
                 .Enrich.WithExceptionDetails()
-                .MinimumLevel.Debug()
+                .MinimumLevel.Verbose()
                 .WriteTo.Trace()
                 .WriteTo.Observers(logEvents => logEvents
                     .Do(le => _output.WriteLine(le.RenderMessage()))

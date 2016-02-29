@@ -20,10 +20,12 @@ namespace Ticket4S.Entity.Evento
         [Required, StringLength(256)]
         public virtual string Nome { get; set; }
 
-        [Required, StringLength(16)]
+        [Required, StringLength(32)]
         public virtual string NomeCurto { get; set; }
 
         [Required]
+        [ForeignKey(nameof(Local))]
+        public virtual Guid? LocalId { get; set; }
         public virtual Local Local { get; set; }
 
         public virtual ICollection<TipoDeIngressoDoEvento> TipoDeIngressos { get; protected set; } = new List<TipoDeIngressoDoEvento>();

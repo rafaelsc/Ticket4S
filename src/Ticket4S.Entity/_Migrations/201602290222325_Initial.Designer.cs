@@ -7,13 +7,13 @@ namespace Ticket4S.Entity.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class BaseInicial : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(BaseInicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602282333140_BaseInicial"; }
+            get { return "201602290222325_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -5,14 +5,17 @@ using Ticket4S.Extensions;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
+using System.Text;
 
 namespace Ticket4S.Entity.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<Ticket4SDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Ticket4SDbContext> //DropCreateDatabaseAlways<Ticket4SDbContext> 
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"_Migrations";
         }
 
         protected override void Seed(Ticket4SDbContext context)
@@ -35,14 +38,15 @@ namespace Ticket4S.Entity.Migrations
 
                 CriadoEm = DateTimeOffset.Now.AddHours(-1),
                 ModificadoEm = DateTimeOffset.Now.AddHours(-1),
+                LocalId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
                 Local = new Local()
                 {
                     Id = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
                     Nome = "Casa de Show BTTF House RJ",
                     NomeCurto = "BTTF House",
                     UFId = "33",
-                    CidadeId = "city3304557",
-                    BairroId = "bairro3304557XX",
+                    CidadeId = "3304557",
+                    BairroId = "3304557XX",
                     CEP = "24222123",
                     NomeDaRua = "Rota 395",
                     NumeroDaRua = "12",
@@ -77,6 +81,7 @@ namespace Ticket4S.Entity.Migrations
 
                 CriadoEm = DateTimeOffset.Now.AddHours(-1),
                 ModificadoEm = DateTimeOffset.Now.AddHours(-1),
+                LocalId = Guid.Parse("04BB25BB-88B1-4B83-A715-595AD5B63CAC"),
                 Local = new Local()
                 {
                     Id = Guid.Parse("04BB25BB-88B1-4B83-A715-595AD5B63CAC"),
@@ -133,12 +138,14 @@ namespace Ticket4S.Entity.Migrations
             SaveChanges(context);
         }
 
+        /*
         private static void SaveChanges(DbContext context)
         {
             context.SaveChanges();
         }
+        */
 
-        /*
+        
         private static void SaveChanges(DbContext context)
         {
             try
@@ -164,6 +171,6 @@ namespace Ticket4S.Entity.Migrations
                 throw new DbEntityValidationException("Entity Validation Failed - errors follow:\n" + sb.ToString(), ex); // Add the original exception as the innerException
             }
         }
-        */
+        
     }
 }

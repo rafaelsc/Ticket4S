@@ -75,11 +75,11 @@
     <Compile Include="Geo\Cidade.cs" />
     <Compile Include="Geo\Bairro.cs" />
     <Compile Include="Geo\UF.cs" />
-    <Compile Include="Migrations\201602282333140_BaseInicial.cs" />
-    <Compile Include="Migrations\201602282333140_BaseInicial.Designer.cs">
-      <DependentUpon>201602282333140_BaseInicial.cs</DependentUpon>
+    <Compile Include="_Migrations\201602290222325_Initial.cs" />
+    <Compile Include="_Migrations\201602290222325_Initial.Designer.cs">
+      <DependentUpon>201602290222325_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="_Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket4SDbContext.cs" />
     <Compile Include="User\Endereco.cs" />
@@ -91,15 +91,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602282333140_BaseInicial.resx">
-      <DependentUpon>201602282333140_BaseInicial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
       <Project>{07C491B1-2ECD-483C-A4CB-07C906ED319E}</Project>
       <Name>Ticket4S.Extensions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="_Migrations\201602290222325_Initial.resx">
+      <DependentUpon>201602290222325_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

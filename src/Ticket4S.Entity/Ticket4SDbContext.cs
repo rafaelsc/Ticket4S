@@ -39,5 +39,7 @@ namespace Ticket4S.Entity
         {
             return new Ticket4SDbContext();
         }
+
+        ///////////////////////////////////////////////////////////////////////////
     }
 }

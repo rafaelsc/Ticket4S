@@ -11,11 +11,10 @@ namespace Ticket4S.Entity.Evento
         [Key]
         public virtual Guid Id { get; set; }
 
-
         [Required, StringLength(256)]
         public virtual string Nome { get; set; }
 
-        [Required, StringLength(16)]
+        [Required, StringLength(32)]
         public virtual string NomeCurto { get; set; }
 
         [Required]

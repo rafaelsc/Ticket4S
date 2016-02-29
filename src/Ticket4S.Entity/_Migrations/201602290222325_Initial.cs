@@ -3,7 +3,7 @@ namespace Ticket4S.Entity.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class BaseInicial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -115,9 +115,9 @@ namespace Ticket4S.Entity.Migrations
                         _rowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("Geo.Bairros", t => t.BairroId, cascadeDelete: true)
-                .ForeignKey("Geo.Cidades", t => t.CidadeId, cascadeDelete: true)
-                .ForeignKey("Geo.UFs", t => t.UFId, cascadeDelete: true)
+                .ForeignKey("Geo.Bairros", t => t.BairroId, cascadeDelete: false)
+                .ForeignKey("Geo.Cidades", t => t.CidadeId, cascadeDelete: false)
+                .ForeignKey("Geo.UFs", t => t.UFId, cascadeDelete: false)
                 .Index(t => t.UFId)
                 .Index(t => t.CidadeId)
                 .Index(t => t.BairroId);
@@ -153,18 +153,18 @@ namespace Ticket4S.Entity.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Nome = c.String(nullable: false, maxLength: 256),
-                        NomeCurto = c.String(nullable: false, maxLength: 16),
+                        NomeCurto = c.String(nullable: false, maxLength: 32),
+                        LocalId = c.Guid(nullable: false),
                         InicioDasVendas = c.DateTimeOffset(nullable: false, precision: 7),
                         TerminoDasVendas = c.DateTimeOffset(precision: 7),
                         Habilitdo = c.Boolean(nullable: false),
                         _criadoEm = c.DateTimeOffset(nullable: false, precision: 7),
                         _modificadoEm = c.DateTimeOffset(nullable: false, precision: 7),
                         _rowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                        Local_Id = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("Evento.Locais", t => t.Local_Id, cascadeDelete: true)
-                .Index(t => t.Local_Id);
+                .ForeignKey("Evento.Locais", t => t.LocalId, cascadeDelete: true)
+                .Index(t => t.LocalId);
             
             CreateTable(
                 "Evento.Locais",
@@ -172,7 +172,7 @@ namespace Ticket4S.Entity.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Nome = c.String(nullable: false, maxLength: 256),
-                        NomeCurto = c.String(nullable: false, maxLength: 16),
+                        NomeCurto = c.String(nullable: false, maxLength: 32),
                         UFId = c.String(nullable: false, maxLength: 32),
                         CidadeId = c.String(nullable: false, maxLength: 32),
                         BairroId = c.String(nullable: false, maxLength: 32),
@@ -183,9 +183,9 @@ namespace Ticket4S.Entity.Migrations
                         _rowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("Geo.Bairros", t => t.BairroId, cascadeDelete: true)
-                .ForeignKey("Geo.Cidades", t => t.CidadeId, cascadeDelete: true)
-                .ForeignKey("Geo.UFs", t => t.UFId, cascadeDelete: true)
+                .ForeignKey("Geo.Bairros", t => t.BairroId, cascadeDelete: false)
+                .ForeignKey("Geo.Cidades", t => t.CidadeId, cascadeDelete: false)
+                .ForeignKey("Geo.UFs", t => t.UFId, cascadeDelete: false)
                 .Index(t => t.UFId)
                 .Index(t => t.CidadeId)
                 .Index(t => t.BairroId);
@@ -278,7 +278,7 @@ namespace Ticket4S.Entity.Migrations
             DropForeignKey("GatewayPagamento.HistoricoDeTransacoes", "IngressoAdquiridoId", "Evento.TiposDeIngressoDoEvento");
             DropForeignKey("GatewayPagamento.HistoricoDeTransacoes", "EventoAdquiridoId", "Evento.Eventos");
             DropForeignKey("Evento.TiposDeIngressoDoEvento", "EventoId", "Evento.Eventos");
-            DropForeignKey("Evento.Eventos", "Local_Id", "Evento.Locais");
+            DropForeignKey("Evento.Eventos", "LocalId", "Evento.Locais");
             DropForeignKey("Evento.Locais", "UFId", "Geo.UFs");
             DropForeignKey("Evento.Locais", "CidadeId", "Geo.Cidades");
             DropForeignKey("Evento.Locais", "BairroId", "Geo.Bairros");
@@ -306,7 +306,7 @@ namespace Ticket4S.Entity.Migrations
             DropIndex("Evento.Locais", new[] { "BairroId" });
             DropIndex("Evento.Locais", new[] { "CidadeId" });
             DropIndex("Evento.Locais", new[] { "UFId" });
-            DropIndex("Evento.Eventos", new[] { "Local_Id" });
+            DropIndex("Evento.Eventos", new[] { "LocalId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });

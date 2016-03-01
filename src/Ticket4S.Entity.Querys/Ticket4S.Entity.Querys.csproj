@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventoQuerys.cs" />
+    <Compile Include="EventQuerys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeoQuerys.cs" />
   </ItemGroup>

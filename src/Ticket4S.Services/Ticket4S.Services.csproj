@@ -81,13 +81,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Email\IEnvioDeEmailService.cs" />
-    <Compile Include="Email\Model\EMailAEnviar.cs" />
-    <Compile Include="Notificacao\INotificarCompraRealizadaService.cs" />
-    <Compile Include="Notificacao\Model\MotivoRecusa.cs" />
-    <Compile Include="Pagamento\IPagamentoService.cs" />
-    <Compile Include="Pagamento\Model\CartaoDeCreditoModels.cs" />
-    <Compile Include="Pagamento\Model\ResultadoDoPagamento.cs" />
+    <Compile Include="Email\ISendEmailService.cs" />
+    <Compile Include="Email\Model\EMailToSend.cs" />
+    <Compile Include="Notification\IPurchaseAccomplishedNotifyService.cs" />
+    <Compile Include="Notification\Model\RejectionReason.cs" />
+    <Compile Include="Pagamento\IPaymentService.cs" />
+    <Compile Include="Pagamento\Model\BillingModels.cs" />
+    <Compile Include="Pagamento\Model\PaymentResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

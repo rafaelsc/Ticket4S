@@ -23,190 +23,189 @@ namespace Ticket4S.ServicesTests
             mapperConfig.AssertConfigurationIsValid();
 
             _mapper = mapperConfig.CreateMapper();
-
         }
 
         [Fact]
         public void CobrancaNoCartaoComResultadoAprovado()
         {
             // Arrange
-            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            var billingData = new BillingWithCreditCard()
             {
                 Id = Guid.NewGuid(),
-                CartaoDeCredito =  new CartaoDeCredito()
+                CreditCard =  new CreditCardInfo()
                 {
-                    Bandeira = Bandeira.Mastercard,
-                    NomeDoDono = "Astrogildo Silcva",
-                    Numero = "4111111111111111".ToSecureString(),
-                    CodigoDeSeguranca = "321".ToSecureString(),
-                    ExpiracaoMes = 06,
-                    ExpiracaoAno = 2020,
+                    CreditCardBrand = CreditCardBrand.Mastercard,
+                    HolderName = "Astrogildo Silcva",
+                    CreditCardNumber = "4111111111111111".ToSecureString(),
+                    SecurityCode = "321".ToSecureString(),
+                    ExpMonth = 06,
+                    ExpYear = 2020,
                 },
-                Valor = 100.00M
+                Value = 100.00M
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
-            var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
 
             // Assert
             result.Should().NotBeNull();
             result.DebugRawData.Should().NotBeNullOrWhiteSpace();
-            result.PagamentoCobradoComSucesso.Should().BeTrue();
-            result.IdDoPedidoNoSistemaDePagamento.Should().NotBeNullOrWhiteSpace();
-            result.MessagemDeRespostaDaOperacao.Should().NotBeNullOrWhiteSpace();
+            result.PaymentBilledSuccessful.Should().BeTrue();
+            result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
         }
 
         [Fact]
         public void CobrancaNoCartaoComResultadoNaoAtorizado()
         {
             // Arrange
-            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            var billingData = new BillingWithCreditCard()
             {
                 Id = Guid.NewGuid(),
-                CartaoDeCredito = new CartaoDeCredito()
+                CreditCard = new CreditCardInfo()
                 {
-                    Bandeira = Bandeira.Mastercard,
-                    NomeDoDono = "Astrogildo Silcva",
-                    Numero = "4111111111111111".ToSecureString(),
-                    CodigoDeSeguranca = "321".ToSecureString(),
-                    ExpiracaoMes = 06,
-                    ExpiracaoAno = 2020,
+                    CreditCardBrand = CreditCardBrand.Mastercard,
+                    HolderName = "Astrogildo Silcva",
+                    CreditCardNumber = "4111111111111111".ToSecureString(),
+                    SecurityCode = "321".ToSecureString(),
+                    ExpMonth = 06,
+                    ExpYear = 2020,
                 },
-                Valor = 10021.84M
+                Value = 10021.84M
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
-            var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
 
             // Assert
             result.Should().NotBeNull();
             result.DebugRawData.Should().NotBeNullOrWhiteSpace();
-            result.PagamentoCobradoComSucesso.Should().BeFalse();
-            result.IdDoPedidoNoSistemaDePagamento.Should().NotBeNullOrWhiteSpace();
-            result.MessagemDeRespostaDaOperacao.Should().NotBeNullOrWhiteSpace();
+            result.PaymentBilledSuccessful.Should().BeFalse();
+            result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
         }
 
         [Fact]
         public void CobrancaNoCartaoComFalhaDeComunicacao()
         {
             // Arrange
-            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            var billingData = new BillingWithCreditCard()
             {
                 Id = Guid.NewGuid(),
-                CartaoDeCredito = new CartaoDeCredito()
+                CreditCard = new CreditCardInfo()
                 {
-                    Bandeira = Bandeira.Mastercard,
-                    NomeDoDono = "Astrogildo Silcva",
-                    Numero = "4111111111111111".ToSecureString(),
-                    CodigoDeSeguranca = "321".ToSecureString(),
-                    ExpiracaoMes = 06,
-                    ExpiracaoAno = 2020,
+                    CreditCardBrand = CreditCardBrand.Mastercard,
+                    HolderName = "Astrogildo Silcva",
+                    CreditCardNumber = "4111111111111111".ToSecureString(),
+                    SecurityCode = "321".ToSecureString(),
+                    ExpMonth = 06,
+                    ExpYear = 2020,
                 },
-                Valor = 1050.01M
+                Value = 1050.01M
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
-            var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
 
             // Assert
             result.Should().NotBeNull();
             result.DebugRawData.Should().NotBeNullOrWhiteSpace();
-            result.PagamentoCobradoComSucesso.Should().BeFalse();
-            result.IdDoPedidoNoSistemaDePagamento.Should().NotBeNullOrWhiteSpace();
-            result.MessagemDeRespostaDaOperacao.Should().NotBeNullOrWhiteSpace();
+            result.PaymentBilledSuccessful.Should().BeFalse();
+            result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
         }
 
         [Fact]
         public void CobrancaNoCartaoFaltandoSemPassarValor()
         {
             // Arrange
-            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            var billingData = new BillingWithCreditCard()
             {
                 Id = Guid.NewGuid(),
-                CartaoDeCredito = new CartaoDeCredito()
+                CreditCard = new CreditCardInfo()
                 {
-                    Bandeira = Bandeira.Mastercard,
-                    NomeDoDono = "Astrogildo Silcva",
-                    Numero = "4111111111111111".ToSecureString(),
-                    CodigoDeSeguranca = "321".ToSecureString(),
-                    ExpiracaoMes = 06,
-                    ExpiracaoAno = 2020,
+                    CreditCardBrand = CreditCardBrand.Mastercard,
+                    HolderName = "Astrogildo Silcva",
+                    CreditCardNumber = "4111111111111111".ToSecureString(),
+                    SecurityCode = "321".ToSecureString(),
+                    ExpMonth = 06,
+                    ExpYear = 2020,
                 },
                 //Valor = 0.10M
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
 
             // Assert
-            Assert.Throws<ArgumentException>(() => pagamentoService.PagarComCartaoDeCredito(cobrancaData));
+            Assert.Throws<ArgumentException>(() => paymentService.PayWithCreditCard(billingData));
         }
 
         [Fact]
         public void CobrancaNoCartaoFaltandoDados1()
         {
             // Arrange
-            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            var billingData = new BillingWithCreditCard()
             {
                 Id = Guid.NewGuid(),
-                CartaoDeCredito = new CartaoDeCredito()
+                CreditCard = new CreditCardInfo()
                 {
-                    Bandeira = Bandeira.Mastercard,
-                    NomeDoDono = "Astrogildo Silcva",
-                    Numero = "".ToSecureString(),
-                    CodigoDeSeguranca = "321".ToSecureString(),
-                    ExpiracaoMes = 06,
-                    ExpiracaoAno = 2020,
+                    CreditCardBrand = CreditCardBrand.Mastercard,
+                    HolderName = "Astrogildo Silva",
+                    CreditCardNumber = "".ToSecureString(),
+                    SecurityCode = "321".ToSecureString(),
+                    ExpMonth = 06,
+                    ExpYear = 2020,
                 },
-                Valor = 0.10M
+                Value = 0.10M
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
-            var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
 
             // Assert
             result.Should().NotBeNull();
             result.DebugRawData.Should().NotBeNullOrWhiteSpace();
-            result.PagamentoCobradoComSucesso.Should().BeFalse();
-            result.IdDoPedidoNoSistemaDePagamento.Should().BeNull();
-            result.MessagemDeRespostaDaOperacao.Should().NotBeNullOrWhiteSpace();
-            result.MessagemDeRespostaDaOperacao.Should().Be("O número do cartão deve ter no mínimo 10 dígitos e no máximo 24 digitos.");
+            result.PaymentBilledSuccessful.Should().BeFalse();
+            result.OrderIdInTheGatewaySystem.Should().BeNull();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().Be("O número do cartão deve ter no mínimo 10 dígitos e no máximo 24 digitos.");
         }
 
         [Fact]
         public void CobrancaNoCartaoFaltandoDados2()
         {
             // Arrange
-            var cobrancaData = new CobrancaViaCartaoDeCredito()
+            var billingData = new BillingWithCreditCard()
             {
                 Id = Guid.NewGuid(),
-                CartaoDeCredito = new CartaoDeCredito()
+                CreditCard = new CreditCardInfo()
                 {
-                    Bandeira = Bandeira.Mastercard,
-                    NomeDoDono = "Astrogildo Silcva",
-                    Numero = "4111111111111111".ToSecureString(),
-                    CodigoDeSeguranca = "321".ToSecureString(),
-                    ExpiracaoMes = 04,
-                    ExpiracaoAno = 1500,
+                    CreditCardBrand = CreditCardBrand.Mastercard,
+                    HolderName = "Astrogildo Silcva",
+                    CreditCardNumber = "4111111111111111".ToSecureString(),
+                    SecurityCode = "321".ToSecureString(),
+                    ExpMonth = 04,
+                    ExpYear = 1500,
                 },
-                Valor = 1000.00M
+                Value = 1000.00M
             };
 
             // Act
-            IPagamentoService pagamentoService = new MundpaggPagamentoService(_mapper, Log);
-            var result = pagamentoService.PagarComCartaoDeCredito(cobrancaData);
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
 
             // Assert
             result.Should().NotBeNull();
             result.DebugRawData.Should().NotBeNullOrWhiteSpace();
-            result.PagamentoCobradoComSucesso.Should().BeFalse();
-            result.IdDoPedidoNoSistemaDePagamento.Should().BeNull();
-            result.MessagemDeRespostaDaOperacao.Should().NotBeNullOrWhiteSpace();
-            result.MessagemDeRespostaDaOperacao.Should().Be("Data de vencimento do cartão expirada.");
+            result.PaymentBilledSuccessful.Should().BeFalse();
+            result.OrderIdInTheGatewaySystem.Should().BeNull();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().Be("Data de vencimento do cartão expirada.");
         }
     }
 }

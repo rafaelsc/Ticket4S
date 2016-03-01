@@ -104,9 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
-    <Compile Include="Email\FakeEnvioDeEmailService.cs" />
-    <Compile Include="Pagamento\FailFakePagamentoService.cs" />
-    <Compile Include="Pagamento\SuceessFakePagamentoService.cs" />
+    <Compile Include="Email\FakeSendEmailService.cs" />
+    <Compile Include="Pagamento\FailFakePaymentService.cs" />
+    <Compile Include="Pagamento\SuceessFakePaymentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

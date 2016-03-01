@@ -1,6 +1,6 @@
 namespace Ticket4S.Entity
 {
-    public enum Bandeira
+    public enum CreditCardBrand
     {
         Visa = 1,
         Mastercard = 2,

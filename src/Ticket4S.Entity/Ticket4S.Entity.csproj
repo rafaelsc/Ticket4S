@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bandeira.cs" />
+    <Compile Include="CreditCardBrand.cs" />
     <Compile Include="Compra\PedidoDeCompra.cs" />
     <Compile Include="Evento\Evento.cs" />
     <Compile Include="Evento\Local.cs" />

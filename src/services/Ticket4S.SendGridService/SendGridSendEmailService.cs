@@ -11,34 +11,34 @@ using Ticket4S.Utils;
 
 namespace Ticket4S.SendGridService
 {
-    public class SendGridEnvioDeEmailService : IEnvioDeEmailService
+    public class SendGridSendEmailService : ISendEmailService
     {
         protected ILogger Log { get; }
         protected string ApiKey => ConfigurationManager.AppSettings["sendgrid:ApiKey"];
 
-        public SendGridEnvioDeEmailService(ILogger log)
+        public SendGridSendEmailService(ILogger log)
         {
-            Log = log.ForContext<SendGridEnvioDeEmailService>();
+            Log = log.ForContext<SendGridSendEmailService>();
         }
 
-        public Task EnviarAsync(EMailAEnviar dadosDoEmail)
+        public Task SendAsync(EMailToSend emailData)
         {
-            Contract.Requires(dadosDoEmail != null);
+            Contract.Requires(emailData != null);
             Contract.Ensures(Contract.Result<Task>() != null);
-            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(dadosDoEmail), dadosDoEmail);
+            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(emailData), emailData);
 
             Log.Information("Enviando de Email Pelo SendGrid");
 
             try
             {
                 var sendGridMessage = new SendGridMessage();
-                sendGridMessage.AddTo(dadosDoEmail.EMailDestinatario);
+                sendGridMessage.AddTo(emailData.DestinationEMail);
 
                 sendGridMessage.From = new MailAddress("noreply@Ticket4S.com", "Ticket4S"); //TODO: Colocar no appSetting
-                sendGridMessage.Subject = dadosDoEmail.Assunto;
-                sendGridMessage.Html = sendGridMessage.Text = dadosDoEmail.Corpo;
+                sendGridMessage.Subject = emailData.Subject;
+                sendGridMessage.Html = sendGridMessage.Text = emailData.Body;
 
-                Log.Debug("Dados de Envido do e-mail. {dadosDoEmail}", dadosDoEmail);
+                Log.Debug("Dados de Envido do e-mail. {dadosDoEmail}", emailData);
 
                 var transportWeb = new Web(ApiKey);
                 return transportWeb.DeliverAsync(sendGridMessage);

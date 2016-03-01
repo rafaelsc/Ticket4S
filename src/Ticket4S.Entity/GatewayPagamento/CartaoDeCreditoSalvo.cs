@@ -15,7 +15,7 @@ namespace Ticket4S.Entity.GatewayPagamento
         public virtual string IdDoCartaoNoGateway { get; set; }
 
         [Required]
-        public Bandeira? Bandeira { get; set; }
+        public CreditCardBrand? CreditCardBrand { get; set; }
 
         [Required, StringLength(24)]
         public string NumeroCartaoMascarado { get; set; }

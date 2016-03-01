@@ -16,16 +16,15 @@ namespace Ticket4S.Utils
         public static bool TryValidate(object @object)
         {
             ICollection<ValidationResult> results;
-            TryValidate(@object, out results);
-            return !results.Any();
+            var isValid = TryValidate(@object, out results);
+            return isValid;
         }
 
         public static bool TryValidate(object @object, out ICollection<ValidationResult> results)
         {
             var context = new ValidationContext(@object, serviceProvider: null, items: null);
             results = new List<ValidationResult>();
-            return Validator.TryValidateObject(@object, context, results, validateAllProperties: true
-            );
+            return Validator.TryValidateObject(@object, context, results, validateAllProperties: true);
         }
     }
 }

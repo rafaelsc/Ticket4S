@@ -7,20 +7,20 @@ using Ticket4S.Utils;
 
 namespace Ticket4S.CommonTest.Email
 {
-    public class FakeEnvioDeEmailService : IEnvioDeEmailService
+    public class FakeSendEmailService : ISendEmailService
     {
         protected ILogger Log { get; }
 
-        public FakeEnvioDeEmailService(ILogger log)
+        public FakeSendEmailService(ILogger log)
         {
-            Log = log.ForContext<FakeEnvioDeEmailService>();
+            Log = log.ForContext<FakeSendEmailService>();
         }
 
-        public Task EnviarAsync(EMailAEnviar dadosDoEmail)
+        public Task SendAsync(EMailToSend emailData)
         {
-            Contract.Requires(dadosDoEmail != null);
+            Contract.Requires(emailData != null);
             Contract.Ensures(Contract.Result<Task>() != null);
-            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(dadosDoEmail), dadosDoEmail);
+            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(emailData), emailData);
 
             Log.Information("Fake: EmailService.EnviarEmailAsync()");
 

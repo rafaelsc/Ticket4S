@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Ticket4S.Services.Notificacao.Model;
+using Ticket4S.Services.Notification.Model;
 
-namespace Ticket4S.Services.Notificacao
+namespace Ticket4S.Services.Notification
 {
-    public interface INotificarCompraRealizadaService
+    public interface IPurchaseAccomplishedNotifyService
     {
         /*
         [NotNull]

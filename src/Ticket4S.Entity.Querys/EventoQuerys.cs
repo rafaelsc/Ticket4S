@@ -6,23 +6,23 @@ namespace Ticket4S.Entity.Querys
 {
     public static class EventoQuerys
     {
-        public static IQueryable<Evento.Evento> Ativos(this IQueryable<Evento.Evento> eventos)
+        public static IQueryable<Event.Event> Ativos(this IQueryable<Event.Event> eventos)
         {
-            return eventos.Where(e => e.Habilitdo);
+            return eventos.Where(e => e.Active);
         }
 
-        public static IQueryable<Evento.Evento> ListarEventosDisponiveisParaCompra(this IQueryable<Evento.Evento> eventos)
+        public static IQueryable<Event.Event> ListarEventosDisponiveisParaCompra(this IQueryable<Event.Event> eventos)
         {
             var date = DateTimeOffset.Now;
             return eventos.ListarEventosDisponiveisParaCompra(date);
         }
 
-        public static IQueryable<Evento.Evento> ListarEventosDisponiveisParaCompra(this IQueryable<Evento.Evento> eventos, DateTimeOffset naData)
+        public static IQueryable<Event.Event> ListarEventosDisponiveisParaCompra(this IQueryable<Event.Event> eventos, DateTimeOffset naData)
         {
             var result = from ev in eventos.Ativos()
-                         where naData >= ev.InicioDasVendas
-                         where ev.TerminoDasVendas == null || ev.TerminoDasVendas <= naData
-                         orderby ev.Nome
+                         where naData >= ev.BeginningOfSales
+                         where ev.EndOfSales == null || ev.EndOfSales <= naData
+                         orderby ev.Name
                          select ev;
 
             return result;
@@ -31,16 +31,16 @@ namespace Ticket4S.Entity.Querys
 
     public static class TipoDeIngressoDoEventoQuerys
     {
-        public static IQueryable<Evento.TipoDeIngressoDoEvento> Ativos(this IQueryable<Evento.TipoDeIngressoDoEvento> tipoDeIngressos)
+        public static IQueryable<Event.EventTicketType> Ativos(this IQueryable<Event.EventTicketType> tipoDeIngressos)
         {
-            return tipoDeIngressos.Where(e => e.Habilitado);
+            return tipoDeIngressos.Where(e => e.Available);
         }
 
-        public static IQueryable<Evento.TipoDeIngressoDoEvento> OrdemPadrao(this IQueryable<Evento.TipoDeIngressoDoEvento> tipoDeIngressos)
+        public static IQueryable<Event.EventTicketType> OrdemPadrao(this IQueryable<Event.EventTicketType> tipoDeIngressos)
         {
             var result = from t in tipoDeIngressos
-                         orderby t.OrdemDeExibicao
-                         orderby t.Nome
+                         orderby t.ViewOrder
+                         orderby t.Name
                          select t;
 
             return result;

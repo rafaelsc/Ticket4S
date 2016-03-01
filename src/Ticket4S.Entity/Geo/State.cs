@@ -4,24 +4,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ticket4S.Entity.Geo
 {
-    [Table("UFs", Schema = "Geo")]
-    public class UF
+    [Table("States", Schema = "Geo")]
+    public class State
     {
         [Key, StringLength(32)]
         public string Id { get; set; }
 
         [Required, StringLength(255)]
-        public string Nome { get; set; }
+        public string Name { get; set; }
 
         [Required, StringLength(8)]
-        public string Abreviacao { get; set; }
+        public string Abbreviation { get; set; }
 
         [Required]
-        public bool Habilitado { get; set; } = false;
+        public bool Available { get; set; } = false;
 
         [Required]
         public string ContryIsoCode { get; set; }
 
-        public virtual ICollection<Cidade> Cidades { get; protected set; } = new List<Cidade>();
+        public virtual ICollection<City> Cities { get; protected set; } = new List<City>();
     }
 }

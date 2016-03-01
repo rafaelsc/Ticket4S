@@ -6,31 +6,31 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Ticket4S.Entity.GatewayPagamento;
+using Ticket4S.Entity.GatewayPayment;
 
 namespace Ticket4S.Entity.User
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class Usuario : IdentityUser
+    public class User : IdentityUser
     {
         [Required]
-        public virtual string Nome { get; set; }
+        public virtual string Name { get; set; }
 
         [Required]
         public virtual string CPF { get; set; }
 
         [Required]
-        public virtual DateTime DataNascimento { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
 
         [Required]
-        public virtual Sexo Sexo { get; set; }
+        public virtual Gender Gender { get; set; }
 
         //[Required]
-        [ForeignKey(nameof(Endereco))]
-        public virtual Guid? EnderecoId { get; set; }
-        public virtual Endereco Endereco { get; set; }
+        [ForeignKey(nameof(Address))]
+        public virtual Guid? AddressId { get; set; }
+        public virtual Address Address { get; set; }
         
-        public ICollection<CartaoDeCreditoSalvo> CartaoDeCreditoSalvoes { get; protected set; } = new List<CartaoDeCreditoSalvo>();
+        public ICollection<SavedCreditCard> SavedCreditCards { get; protected set; } = new List<SavedCreditCard>();
 
 
         [Timestamp, Column("_rowVersion")]
@@ -38,7 +38,7 @@ namespace Ticket4S.Entity.User
 
         ///////////////////////////////////////////////////////////////////////////
         
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Usuario> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

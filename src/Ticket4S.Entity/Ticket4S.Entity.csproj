@@ -66,25 +66,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreditCardBrand.cs" />
-    <Compile Include="Compra\PedidoDeCompra.cs" />
-    <Compile Include="Evento\Evento.cs" />
-    <Compile Include="Evento\Local.cs" />
-    <Compile Include="Evento\TipoDeIngressoDoEvento.cs" />
-    <Compile Include="GatewayPagamento\CartaoDeCreditoSalvo.cs" />
-    <Compile Include="GatewayPagamento\HistoricoDeTransacoes.cs" />
-    <Compile Include="Geo\Cidade.cs" />
-    <Compile Include="Geo\Bairro.cs" />
-    <Compile Include="Geo\UF.cs" />
-    <Compile Include="_Migrations\201602290222325_Initial.cs" />
-    <Compile Include="_Migrations\201602290222325_Initial.Designer.cs">
-      <DependentUpon>201602290222325_Initial.cs</DependentUpon>
+    <Compile Include="Purchase\PurchaseOrder.cs" />
+    <Compile Include="Event\Event.cs" />
+    <Compile Include="Event\EventPlace.cs" />
+    <Compile Include="Event\EventTicketType.cs" />
+    <Compile Include="GatewayPagamento\SavedCreditCard.cs" />
+    <Compile Include="GatewayPagamento\TransactionHistory.cs" />
+    <Compile Include="Geo\City.cs" />
+    <Compile Include="Geo\District.cs" />
+    <Compile Include="Geo\State.cs" />
+    <Compile Include="_Migrations\201603010348136_Initial.cs" />
+    <Compile Include="_Migrations\201603010348136_Initial.Designer.cs">
+      <DependentUpon>201603010348136_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="_Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket4SDbContext.cs" />
-    <Compile Include="User\Endereco.cs" />
-    <Compile Include="User\Usuario.cs" />
-    <Compile Include="User\Sexo.cs" />
+    <Compile Include="User\Address.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="User\Gender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -97,8 +97,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="_Migrations\201602290222325_Initial.resx">
-      <DependentUpon>201602290222325_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="_Migrations\201603010348136_Initial.resx">
+      <DependentUpon>201603010348136_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,33 +1,33 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Ticket4S.Entity.Compra;
-using Ticket4S.Entity.Evento;
-using Ticket4S.Entity.GatewayPagamento;
+using Ticket4S.Entity.Purchase;
+using Ticket4S.Entity.Event;
+using Ticket4S.Entity.GatewayPayment;
 using Ticket4S.Entity.Geo;
 using Ticket4S.Entity.User;
 
 namespace Ticket4S.Entity
 {
-    public class Ticket4SDbContext : IdentityDbContext<Usuario>
+    public class Ticket4SDbContext : IdentityDbContext<User.User>
     {
         //Evento
-        public virtual DbSet<Evento.Evento> Evento { get; set; }
-        public virtual DbSet<Local> LocaisDeEventos { get; set; }
+        public virtual DbSet<Event.Event> Event { get; set; }
+        public virtual DbSet<EventPlace> EventsPlaces { get; set; }
 
         //Compra
-        public virtual DbSet<PedidoDeCompra> PedidosDeCompras { get; set; }
+        public virtual DbSet<PurchaseOrder> PedidosDeCompras { get; set; }
 
         //GatwayPagemento
-        public virtual DbSet<CartaoDeCreditoSalvo> CartaoDeCreditoSalvo { get; set; }
-        public virtual DbSet<HistoricoDeTransacoes> HistoricoDeTransacoes { get; set; }
+        public virtual DbSet<SavedCreditCard> CartaoDeCreditoSalvo { get; set; }
+        public virtual DbSet<TransactionHistory> HistoricoDeTransacoes { get; set; }
         
         //User
-        public virtual DbSet<Endereco> Enderecos { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
 
         //Geo
-        public virtual DbSet<UF> UFs { get; set; }
-        public virtual DbSet<Cidade> Cidades { get; set; }
-        public virtual DbSet<Bairro> Bairros { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<District> Neighborhoods { get; set; }
 
         ///////////////////////////////////////////////////////////////////////////
 

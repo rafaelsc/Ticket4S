@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Ticket4S.Entity.Evento;
+using Ticket4S.Entity.Event;
 using Ticket4S.Entity.Geo;
 using Ticket4S.Extensions;
 using System;
@@ -26,115 +26,115 @@ namespace Ticket4S.Entity.Migrations
 
         private void SeedEventosExemplos(Ticket4SDbContext context)
         {
-            var evento1 = new Evento.Evento
+            var evento1 = new Event.Event
             {
                 Id = Guid.Parse("756FEF9D-25A6-4418-9910-5C5C458C94CA"),
-                Nome = "Show dos 'The Pinheads'",
-                NomeCurto = "The Pinheads",
+                Name = "Show dos 'The Pinheads'",
+                ShortName = "The Pinheads",
                 
-                Habilitdo = true,
-                InicioDasVendas = DateTimeOffset.Now,
-                TerminoDasVendas = DateTimeOffset.Now.AddDays(60),
+                Active = true,
+                BeginningOfSales = DateTimeOffset.Now,
+                EndOfSales = DateTimeOffset.Now.AddDays(60),
 
-                CriadoEm = DateTimeOffset.Now.AddHours(-1),
-                ModificadoEm = DateTimeOffset.Now.AddHours(-1),
-                LocalId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
-                Local = new Local()
+                CreatedAt = DateTimeOffset.Now.AddHours(-1),
+                ChangedAt = DateTimeOffset.Now.AddHours(-1),
+                EventPlaceId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
+                EventPlace = new EventPlace()
                 {
                     Id = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
-                    Nome = "Casa de Show BTTF House RJ",
-                    NomeCurto = "BTTF House",
-                    UFId = "33",
-                    CidadeId = "3304557",
-                    BairroId = "3304557XX",
-                    CEP = "24222123",
-                    NomeDaRua = "Rota 395",
-                    NumeroDaRua = "12",
+                    Name = "Casa de Show BTTF House RJ",
+                    ShortName = "BTTF House",
+                    StateId = "33",
+                    CityId = "3304557",
+                    DistrictId = "3304557XX",
+                    ZipCode = "24222123",
+                    Street = "Rota 395",
+                    StreetNumber = "12",
                 },
             };
-            var tipoIngressos1 = new List<TipoDeIngressoDoEvento>
+            var tipoIngressos1 = new List<EventTicketType>
             {
-                new TipoDeIngressoDoEvento() { Id = Guid.Parse("BEFA1122-9249-425A-9C7E-0261AA185136"),
-                    EventoId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
-                    Nome = "Palco",
-                    OrdemDeExibicao = 10,
-                    Valor = 88M
+                new EventTicketType() { Id = Guid.Parse("BEFA1122-9249-425A-9C7E-0261AA185136"),
+                    EventId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
+                    Name = "Palco",
+                    ViewOrder = 10,
+                    Value = 88M
                 },
-                new TipoDeIngressoDoEvento() { Id = Guid.Parse("C3D63D54-A0E9-4A73-AEFB-7668D5ADBADB"),
-                    EventoId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
-                    Nome = "Bar",
-                    OrdemDeExibicao = 20,
-                    Valor = 80M
+                new EventTicketType() { Id = Guid.Parse("C3D63D54-A0E9-4A73-AEFB-7668D5ADBADB"),
+                    EventId = Guid.Parse("27655BEE-2A2A-4FE4-B035-1FF914B12C3F"),
+                    Name = "Bar",
+                    ViewOrder = 20,
+                    Value = 80M
                 }
             };
-            evento1.TipoDeIngressos.AddAll(tipoIngressos1);
+            evento1.TicketsTypes.AddAll(tipoIngressos1);
 
-            var evento2 = new Evento.Evento
+            var evento2 = new Event.Event
             {
                 Id = Guid.Parse("C5A8E294-464F-40C5-B2A6-A4BBFF5CB825"),
-                Nome = "Ultimo Show dos 'The Pinheads'",
-                NomeCurto = "The Pinheads em SP",
+                Name = "Ultimo Show dos 'The Pinheads'",
+                ShortName = "The Pinheads em SP",
 
-                Habilitdo = true,
-                InicioDasVendas = DateTimeOffset.Now,
-                TerminoDasVendas = DateTimeOffset.Now.AddDays(60),
+                Active = true,
+                BeginningOfSales = DateTimeOffset.Now,
+                EndOfSales = DateTimeOffset.Now.AddDays(60),
 
-                CriadoEm = DateTimeOffset.Now.AddHours(-1),
-                ModificadoEm = DateTimeOffset.Now.AddHours(-1),
-                LocalId = Guid.Parse("04BB25BB-88B1-4B83-A715-595AD5B63CAC"),
-                Local = new Local()
+                CreatedAt = DateTimeOffset.Now.AddHours(-1),
+                ChangedAt = DateTimeOffset.Now.AddHours(-1),
+                EventPlaceId = Guid.Parse("04BB25BB-88B1-4B83-A715-595AD5B63CAC"),
+                EventPlace = new EventPlace()
                 {
                     Id = Guid.Parse("04BB25BB-88B1-4B83-A715-595AD5B63CAC"),
-                    Nome = "Casa de Show BTTF House SP",
-                    NomeCurto = "BTTF House",
-                    UFId = "35",
-                    CidadeId = "3303302",
-                    BairroId = "3550308XX",
-                    CEP = "12345678",
-                    NomeDaRua = "Av Paulistana",
-                    NumeroDaRua = "123",
+                    Name = "Casa de Show BTTF House SP",
+                    ShortName = "BTTF House",
+                    StateId = "35",
+                    CityId = "3303302",
+                    DistrictId = "3550308XX",
+                    ZipCode = "12345678",
+                    Street = "Av Paulistana",
+                    StreetNumber = "123",
                 },
             };
-            var tipoIngressos2 = new List<TipoDeIngressoDoEvento>
+            var tipoIngressos2 = new List<EventTicketType>
             {
-                new TipoDeIngressoDoEvento() { Id = Guid.Parse("D7705E47-7B66-4BA0-9D13-47C1019FC917"),
-                    EventoId = Guid.Parse("C5A8E294-464F-40C5-B2A6-A4BBFF5CB825"),
-                    Nome = "Palco",
-                    OrdemDeExibicao = 10,
-                    Valor = 1050.05M
+                new EventTicketType() { Id = Guid.Parse("D7705E47-7B66-4BA0-9D13-47C1019FC917"),
+                    EventId = Guid.Parse("C5A8E294-464F-40C5-B2A6-A4BBFF5CB825"),
+                    Name = "Palco",
+                    ViewOrder = 10,
+                    Value = 1050.05M
                 },
-                new TipoDeIngressoDoEvento() { Id = Guid.Parse("B250B16A-B346-4EBE-B9D1-751674D71333"),
-                    EventoId = Guid.Parse("C5A8E294-464F-40C5-B2A6-A4BBFF5CB825"),
-                    Nome = "Bar",
-                    OrdemDeExibicao = 20,
-                    Valor = 15000.00M
+                new EventTicketType() { Id = Guid.Parse("B250B16A-B346-4EBE-B9D1-751674D71333"),
+                    EventId = Guid.Parse("C5A8E294-464F-40C5-B2A6-A4BBFF5CB825"),
+                    Name = "Bar",
+                    ViewOrder = 20,
+                    Value = 15000.00M
                 }
             };
-            evento2.TipoDeIngressos.AddAll(tipoIngressos2);
+            evento2.TicketsTypes.AddAll(tipoIngressos2);
 
 
-            context.Evento.AddOrUpdate(s => s.Id, evento1, evento2);
+            context.Event.AddOrUpdate(s => s.Id, evento1, evento2);
             SaveChanges(context);
         }
 
         private static void SeedGeo(Ticket4SDbContext context)
         {
-            var stateRJ = new UF() { Id = "33", Nome = "Rio de Janeiro", Abreviacao = "RJ", ContryIsoCode = "BR", Habilitado = true };
-            var stateSP = new UF() { Id = "35", Nome = "São Paulo", Abreviacao = "SP", ContryIsoCode = "BR", Habilitado = true };
+            var stateRJ = new State() { Id = "33", Name = "Rio de Janeiro", Abbreviation = "RJ", ContryIsoCode = "BR", Available = true };
+            var stateSP = new State() { Id = "35", Name = "São Paulo", Abbreviation = "SP", ContryIsoCode = "BR", Available = true };
             
-            context.UFs.AddOrUpdate(s => s.Id, stateRJ, stateSP);
+            context.States.AddOrUpdate(s => s.Id, stateRJ, stateSP);
             SaveChanges(context);
 
-            var city3304557 = new Cidade() { Id = "3304557", Nome = "Rio de Janeiro", Habilitado = true, UFId = "33" };
-            var city3303302 = new Cidade() { Id = "3303302", Nome = "Niterói", Habilitado = true, UFId = "33" };
-            var city355030 = new Cidade() { Id = "355030", Nome = "São Paulo", Habilitado = true, UFId = "35" };
-            context.Cidades.AddOrUpdate(s => s.Id, city3304557, city3303302, city355030);
+            var city3304557 = new City() { Id = "3304557", Name = "Rio de Janeiro", Available = true, StateId = "33" };
+            var city3303302 = new City() { Id = "3303302", Name = "Niterói", Available = true, StateId = "33" };
+            var city355030 = new City() { Id = "355030", Name = "São Paulo", Available = true, StateId = "35" };
+            context.Cities.AddOrUpdate(s => s.Id, city3304557, city3303302, city355030);
             SaveChanges(context);
 
-            var bairro3550308XX = new Bairro() { Id = "3550308XX", Nome = "Centro", CidadeId = "355030", Habilitado = true};
-            var bairro3304557XX = new Bairro() { Id = "3304557XX", Nome = "Centro", CidadeId = "3304557", Habilitado = true };
-            var bairro3303302XX = new Bairro() { Id = "3303302XX", Nome = "Icaraí", CidadeId = "3303302", Habilitado = true };
-            context.Bairros.AddOrUpdate(s => s.Id, bairro3550308XX, bairro3304557XX, bairro3303302XX);
+            var bairro3550308XX = new District() { Id = "3550308XX", Name = "Centro", CityId = "355030", Available = true};
+            var bairro3304557XX = new District() { Id = "3304557XX", Name = "Centro", CityId = "3304557", Available = true };
+            var bairro3303302XX = new District() { Id = "3303302XX", Name = "Icaraí", CityId = "3303302", Available = true };
+            context.Neighborhoods.AddOrUpdate(s => s.Id, bairro3550308XX, bairro3304557XX, bairro3303302XX);
             SaveChanges(context);
         }
 

@@ -3,22 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ticket4S.Entity.Geo
 {
-    [Table("Bairros", Schema = "Geo")]
-    public class Bairro
+    [Table("Neighborhoods", Schema = "Geo")]
+    public class District
     {
         [Key, StringLength(32)]
         public string Id { get; set; }
 
         [Required, StringLength(255)]
-        public string Nome { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public bool Habilitado { get; set; } = false;
+        public bool Available { get; set; } = false;
 
         [Required]
-        [ForeignKey(nameof(Cidade))]
-        public string CidadeId { get; set; }
+        [ForeignKey(nameof(City))]
+        public string CityId { get; set; }
         
-        public virtual Cidade Cidade { get; set; }
+        public virtual City City { get; set; }
     }
 }

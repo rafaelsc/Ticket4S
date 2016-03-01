@@ -13,7 +13,7 @@ namespace Ticket4S.Entity.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602290222325_Initial"; }
+            get { return "201603010348136_Initial"; }
         }
         
         string IMigrationMetadata.Source

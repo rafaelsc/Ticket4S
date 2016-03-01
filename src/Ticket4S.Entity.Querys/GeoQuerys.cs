@@ -6,21 +6,21 @@ namespace Ticket4S.Entity.Querys
 {
     public static class UFsQuerys
     {
-        public static IQueryable<UF> Ativos(this IQueryable<UF> ufs)
+        public static IQueryable<State> Ativos(this IQueryable<State> ufs)
         {
-            return ufs.Where(e => e.Habilitado);
+            return ufs.Where(e => e.Available);
         }
 
-        public static IQueryable<UF> OrdemPadrao(this IQueryable<UF> ufs)
+        public static IQueryable<State> OrdemPadrao(this IQueryable<State> ufs)
         {
             var result = from t in ufs
-                orderby t.Nome
+                orderby t.Name
                 select t;
 
             return result;
         }
 
-        public static IQueryable<UF> ListarParaCombo(this IQueryable<UF> ufs)
+        public static IQueryable<State> ListarParaCombo(this IQueryable<State> ufs)
         {
             var result = from t in ufs.AsNoTracking().Ativos().OrdemPadrao()
                 select t;
@@ -31,21 +31,21 @@ namespace Ticket4S.Entity.Querys
 
     public static class CidadeQuerys
     {
-        public static IQueryable<Cidade> Ativos(this IQueryable<Cidade> cidades)
+        public static IQueryable<City> Ativos(this IQueryable<City> cidades)
         {
-            return cidades.Where(e => e.Habilitado);
+            return cidades.Where(e => e.Available);
         }
 
-        public static IQueryable<Cidade> OrdemPadrao(this IQueryable<Cidade> cidades)
+        public static IQueryable<City> OrdemPadrao(this IQueryable<City> cidades)
         {
             var result = from t in cidades
-                         orderby t.Nome
+                         orderby t.Name
                          select t;
 
             return result;
         }
 
-        public static IQueryable<Cidade> ListarParaCombo(this IQueryable<Cidade> cidades)
+        public static IQueryable<City> ListarParaCombo(this IQueryable<City> cidades)
         {
             var result = from t in cidades.AsNoTracking().Ativos().OrdemPadrao()
                          select t;
@@ -56,21 +56,21 @@ namespace Ticket4S.Entity.Querys
 
     public static class BairroQuerys
     {
-        public static IQueryable<Bairro> Ativos(this IQueryable<Bairro> bairros)
+        public static IQueryable<District> Ativos(this IQueryable<District> bairros)
         {
-            return bairros.Where(e => e.Habilitado);
+            return bairros.Where(e => e.Available);
         }
 
-        public static IQueryable<Bairro> OrdemPadrao(this IQueryable<Bairro> bairros)
+        public static IQueryable<District> OrdemPadrao(this IQueryable<District> bairros)
         {
             var result = from t in bairros
-                         orderby t.Nome
+                         orderby t.Name
                          select t;
 
             return result;
         }
 
-        public static IQueryable<Bairro> ListarParaCombo(this IQueryable<Bairro> bairros)
+        public static IQueryable<District> ListarParaCombo(this IQueryable<District> bairros)
         {
             var result = from t in bairros.AsNoTracking().Ativos().OrdemPadrao()
                          select t;

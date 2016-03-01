@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ticket4S.Entity.Geo
 {
-    [Table("Neighborhoods", Schema = "Geo")]
+    [Table("Districts", Schema = "Geo")]
     public class District
     {
         [Key, StringLength(32)]

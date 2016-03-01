@@ -21,6 +21,6 @@ namespace Ticket4S.Entity.Geo
         public string StateId { get; set; }
         public virtual State State { get; set; }
 
-        public virtual ICollection<District> Neighborhoods { get; protected set; } = new List<District>();
+        public virtual ICollection<District> Districts { get; protected set; } = new List<District>();
     }
 }

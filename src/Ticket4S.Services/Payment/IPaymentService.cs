@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
-using Ticket4S.Services.Pagamento.Model;
+using Ticket4S.Services.Payment.Model;
 
-namespace Ticket4S.Services.Pagamento
+namespace Ticket4S.Services.Payment
 {
     public interface IPaymentService
     {

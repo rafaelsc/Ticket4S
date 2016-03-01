@@ -1,4 +1,4 @@
-namespace Ticket4S.Services.Pagamento.Model
+namespace Ticket4S.Services.Payment.Model
 {
     public class PaymentResult
     {

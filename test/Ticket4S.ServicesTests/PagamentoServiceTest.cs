@@ -6,8 +6,8 @@ using Ticket4S.Entity;
 using Ticket4S.Extensions;
 using Ticket4S.MundipaggService;
 using Ticket4S.MundipaggService.AutoMapper;
-using Ticket4S.Services.Pagamento;
-using Ticket4S.Services.Pagamento.Model;
+using Ticket4S.Services.Payment;
+using Ticket4S.Services.Payment.Model;
 using Xunit;
 using Xunit.Abstractions;
 

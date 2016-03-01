@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics.Contracts;
 using Serilog;
-using Ticket4S.Services.Pagamento;
-using Ticket4S.Services.Pagamento.Model;
+using Ticket4S.Services.Payment;
+using Ticket4S.Services.Payment.Model;
 using Ticket4S.Utils;
 
 namespace Ticket4S.CommonTest.Pagamento

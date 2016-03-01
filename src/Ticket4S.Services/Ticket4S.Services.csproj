@@ -85,9 +85,9 @@
     <Compile Include="Email\Model\EMailToSend.cs" />
     <Compile Include="Notification\IPurchaseAccomplishedNotifyService.cs" />
     <Compile Include="Notification\Model\RejectionReason.cs" />
-    <Compile Include="Pagamento\IPaymentService.cs" />
-    <Compile Include="Pagamento\Model\BillingModels.cs" />
-    <Compile Include="Pagamento\Model\PaymentResult.cs" />
+    <Compile Include="Payment\IPaymentService.cs" />
+    <Compile Include="Payment\Model\BillingModels.cs" />
+    <Compile Include="Payment\Model\PaymentResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

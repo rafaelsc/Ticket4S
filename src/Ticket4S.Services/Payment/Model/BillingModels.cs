@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using Ticket4S.Entity;
 using Ticket4S.Entity.User;
 
-namespace Ticket4S.Services.Pagamento.Model
+namespace Ticket4S.Services.Payment.Model
 {
     public class BillingWithCreditCard
     {

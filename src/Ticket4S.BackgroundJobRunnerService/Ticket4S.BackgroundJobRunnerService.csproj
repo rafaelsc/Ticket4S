@@ -132,6 +132,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\services\Ticket4S.MundipaggService\Ticket4S.MundipaggService.csproj">
+      <Project>{12378ef5-58a3-4ac2-bf8d-df297f5940dc}</Project>
+      <Name>Ticket4S.MundipaggService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\services\Ticket4S.SendGridService\Ticket4S.SendGridService.csproj">
+      <Project>{67dbc4ef-0628-464c-a967-6127f399e612}</Project>
+      <Name>Ticket4S.SendGridService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.Entity.Querys\Ticket4S.Entity.Querys.csproj">
+      <Project>{dce852af-8631-4d76-b331-dcff35176412}</Project>
+      <Name>Ticket4S.Entity.Querys</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ticket4S.Entity\Ticket4S.Entity.csproj">
       <Project>{c11c7aac-1864-4e33-87fe-a69b0dc67364}</Project>
       <Name>Ticket4S.Entity</Name>
@@ -139,6 +151,10 @@
     <ProjectReference Include="..\Ticket4S.Extensions\Ticket4S.Extensions.csproj">
       <Project>{07c491b1-2ecd-483c-a4cb-07c906ed319e}</Project>
       <Name>Ticket4S.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.Services\Ticket4S.Services.csproj">
+      <Project>{814eb743-4f48-4283-8735-9834491adf54}</Project>
+      <Name>Ticket4S.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket4S.Utils\Ticket4S.Utils.csproj">
       <Project>{50f496ed-7330-4f6f-a5c3-ce5a3a5638fe}</Project>

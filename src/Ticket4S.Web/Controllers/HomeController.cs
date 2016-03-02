@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ticket4S.Entity;
+using Ticket4S.Entity.Querys;
 
 namespace Ticket4S.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private Ticket4SDbContext Db { get; }
+
+        public HomeController(Ticket4SDbContext db)
         {
-            return View();
+            Db = db;
         }
+
+        public ViewResult Index()
+        {
+            var events = Db.Event.ListAvailableEventsWithTicket().ToList();
+            return View(events);
+        }
+
 
         public ActionResult About()
         {

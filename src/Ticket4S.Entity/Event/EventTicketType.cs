@@ -19,6 +19,7 @@ namespace Ticket4S.Entity.Event
 
         public virtual byte ViewOrder { get; set; }
 
+        [Index]
         public virtual bool Available { get; set; } = true;
 
         [Required]

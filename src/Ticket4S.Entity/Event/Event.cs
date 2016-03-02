@@ -16,6 +16,7 @@ namespace Ticket4S.Entity.Event
         [Required, StringLength(256)]
         public virtual string Name { get; set; }
 
+        [Index()]
         [Required, StringLength(32)]
         public virtual string ShortName { get; set; }
 
@@ -26,14 +27,17 @@ namespace Ticket4S.Entity.Event
 
         public virtual ICollection<EventTicketType> TicketsTypes { get; protected set; } = new List<EventTicketType>();
 
+        [Index("periodOfSales", 2)]
         [Required]
         [DataType(DataType.DateTime)]
         public virtual DateTimeOffset? BeginningOfSales { get; set; }
 
+        [Index("periodOfSales", 3)]
         [CanBeNull]
         [DataType(DataType.DateTime)]
         public virtual DateTimeOffset? EndOfSales { get; set; }
 
+        [Index("periodOfSales", 1)]
         public virtual bool Active { get; set; } = false;
 
         [Column("_createdAt")]

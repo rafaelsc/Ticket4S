@@ -83,6 +83,10 @@
     <Compile Include="_Migrations\201603012258380_FixNames.Designer.cs">
       <DependentUpon>201603012258380_FixNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Migrations\201603020040307_IndexIsImportant.cs" />
+    <Compile Include="_Migrations\201603020040307_IndexIsImportant.Designer.cs">
+      <DependentUpon>201603020040307_IndexIsImportant.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket4SDbContext.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="_Migrations\201603012258380_FixNames.resx">
       <DependentUpon>201603012258380_FixNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Migrations\201603020040307_IndexIsImportant.resx">
+      <DependentUpon>201603020040307_IndexIsImportant.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

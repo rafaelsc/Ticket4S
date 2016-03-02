@@ -22,8 +22,8 @@ E até me possibilitou de usar Libs que tinha pouca experiência, como xUnit, Se
 - FluentAssertions (Test)
 
 ### Usando em Breve ###
-- Hangfire ou Akka
-- SimpleInjector ou Ninject
+- Hangfire ~~ou Akka~~
+- SimpleInjector ~~ou Ninject~~
 - RX?
 
 

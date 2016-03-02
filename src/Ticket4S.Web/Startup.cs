@@ -10,9 +10,12 @@ namespace Ticket4S.Web
     {
         public void Configuration(IAppBuilder app)
         {
+            SerilogConfig.Configure();
+
             ConfigureAuth(app);
 
-            SimpleinjectorConfig.Configure(app);
+            var container = SimpleinjectorConfig.Configure(app);
+            HangfireConfig.Configure(app, container);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Ticket4S.Web.App_Start
 {
     public static class SimpleinjectorConfig
     {
-        public static void Configure(IAppBuilder app)
+        public static Container Configure(IAppBuilder app)
         {
             // Create the container as usual.
             var container = new Container();
@@ -67,7 +67,11 @@ namespace Ticket4S.Web.App_Start
 
             container.Verify();
 
+            //////////////////////////////////////////////////////////////////////////////
+            
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+
+            return container;
         }
 
         public class GreediestConstructorBehavior : IConstructorResolutionBehavior

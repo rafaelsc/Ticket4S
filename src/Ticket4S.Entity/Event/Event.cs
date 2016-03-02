@@ -25,7 +25,7 @@ namespace Ticket4S.Entity.Event
         public virtual Guid? EventPlaceId { get; set; }
         public virtual EventPlace EventPlace { get; set; }
 
-        public virtual ICollection<EventTicketType> TicketsTypes { get; protected set; } = new List<EventTicketType>();
+        public virtual ICollection<EventTicketType> TicketsTypes { get; set; } = new List<EventTicketType>();
 
         [Index("periodOfSales", 2)]
         [Required]

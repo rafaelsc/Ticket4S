@@ -21,8 +21,8 @@ namespace Ticket4S.Entity.Querys
         {
             var result = from ev in events.OnlyActives()
                                     .Include(e => e.TicketsTypes)
-                         where onDate >= ev.BeginningOfSales
-                         where ev.EndOfSales == null || ev.EndOfSales <= onDate
+                         where ev.BeginningOfSales <= onDate
+                         where ev.EndOfSales >= onDate
                          where ev.TicketsTypes.Any()
                          orderby ev.Name
                          select ev;

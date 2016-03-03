@@ -5,7 +5,7 @@ using Ticket4S.Extensions;
 using Ticket4S.Services.Payment.Model;
 using BillingAddress = Ticket4S.Services.Payment.Model.BillingAddress;
 
-namespace Ticket4S.MundipaggService.AutoMapper
+namespace Ticket4S.MundipaggService
 {
     public class MundpaggGatewayMapperProfile : Profile
     {

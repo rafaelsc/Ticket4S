@@ -64,7 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMapper\MundpaggGatewayMapperProfile.cs" />
+    <Compile Include="MundpaggGatewayMapperProfile.cs" />
     <Compile Include="MundpaggPaymentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

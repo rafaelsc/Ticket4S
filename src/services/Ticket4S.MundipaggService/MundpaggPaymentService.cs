@@ -62,7 +62,7 @@ namespace Ticket4S.MundipaggService
                 var orderId = response.Response?.OrderResult?.OrderKey.ToString();
                 var message = GetMessage(errorWasValidation: orderGenerated == false, gatewayResponse: response.Response); //TODO
                 var rawData = response.RawResponse;
-                var savedCc = response.Response?.CreditCardTransactionResultCollection.SingleOrDefault()?.CreditCard;
+                var savedCc = response.Response?.CreditCardTransactionResultCollection?.SingleOrDefault()?.CreditCard;
 
 
                 var savedCreditCard = savedCc == null ? null : new SavedCreditCard(savedCc.InstantBuyKey.ToString(), Mapper.Map<CreditCardBrand>(savedCc.CreditCardBrand), savedCc.MaskedCreditCardNumber);

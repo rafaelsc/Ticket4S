@@ -54,6 +54,7 @@ namespace Ticket4S.ServicesTests
             result.PaymentBilledSuccessful.Should().BeTrue();
             result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
             result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.SavedCreditCard.Should().NotBeNull();
         }
 
         [Fact]
@@ -85,6 +86,7 @@ namespace Ticket4S.ServicesTests
             result.PaymentBilledSuccessful.Should().BeFalse();
             result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
             result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.SavedCreditCard.Should().NotBeNull();
         }
 
         [Fact]
@@ -116,6 +118,7 @@ namespace Ticket4S.ServicesTests
             result.PaymentBilledSuccessful.Should().BeFalse();
             result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
             result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.SavedCreditCard.Should().NotBeNull();
         }
 
         [Fact]
@@ -174,6 +177,7 @@ namespace Ticket4S.ServicesTests
             result.OrderIdInTheGatewaySystem.Should().BeNull();
             result.OperationMessage.Should().NotBeNullOrWhiteSpace();
             result.OperationMessage.Should().Be("O número do cartão deve ter no mínimo 10 dígitos e no máximo 24 digitos.");
+            result.SavedCreditCard.Should().BeNull();
         }
 
         [Fact]
@@ -206,6 +210,99 @@ namespace Ticket4S.ServicesTests
             result.OrderIdInTheGatewaySystem.Should().BeNull();
             result.OperationMessage.Should().NotBeNullOrWhiteSpace();
             result.OperationMessage.Should().Be("Data de vencimento do cartão expirada.");
+            result.SavedCreditCard.Should().BeNull();
+        }
+
+        ////////////////////////
+
+        [Fact]
+        public void CobrancaNoCartaoSalvoComResultadoAprovado()
+        {
+            // Arrange
+            var billingData = new BillingWithSavedCreditCard()
+            {
+                Id = Guid.NewGuid(),
+                IdOfSavedCardInTheGateway = "f5bd4d18-a7d9-4176-9b98-b9f82a5a9e87",
+                Value = 100.00M
+            };
+
+            // Act
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.DebugRawData.Should().NotBeNullOrWhiteSpace();
+            result.PaymentBilledSuccessful.Should().BeTrue();
+            result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.SavedCreditCard.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void CobrancaNoCartaoSalvoComResultadoNaoAtorizado()
+        {
+            // Arrange
+            var billingData = new BillingWithSavedCreditCard()
+            {
+                Id = Guid.NewGuid(),
+                IdOfSavedCardInTheGateway = "f5bd4d18-a7d9-4176-9b98-b9f82a5a9e87",
+                Value = 10021.84M
+            };
+
+            // Act
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.DebugRawData.Should().NotBeNullOrWhiteSpace();
+            result.PaymentBilledSuccessful.Should().BeFalse();
+            result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.SavedCreditCard.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void CobrancaNoCartaoSalvoComFalhaDeComunicacao()
+        {
+            // Arrange
+            var billingData = new BillingWithSavedCreditCard()
+            {
+                Id = Guid.NewGuid(),
+                IdOfSavedCardInTheGateway = "f5bd4d18-a7d9-4176-9b98-b9f82a5a9e87",
+                Value = 1050.01M
+            };
+
+            // Act
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+            var result = paymentService.PayWithCreditCard(billingData);
+
+            // Assert
+            result.Should().NotBeNull();
+            result.DebugRawData.Should().NotBeNullOrWhiteSpace();
+            result.PaymentBilledSuccessful.Should().BeFalse();
+            result.OrderIdInTheGatewaySystem.Should().NotBeNullOrWhiteSpace();
+            result.OperationMessage.Should().NotBeNullOrWhiteSpace();
+            result.SavedCreditCard.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void CobrancaNoCartaoSalvoFaltandoSemPassarValor()
+        {
+            // Arrange
+            var billingData = new BillingWithSavedCreditCard()
+            {
+                Id = Guid.NewGuid(),
+                IdOfSavedCardInTheGateway = "f5bd4d18-a7d9-4176-9b98-b9f82a5a9e87",
+                //Valor = 0.10M
+            };
+
+            // Act
+            IPaymentService paymentService = new MundpaggPaymentService(_mapper, Log);
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => paymentService.PayWithCreditCard(billingData));
         }
     }
 }

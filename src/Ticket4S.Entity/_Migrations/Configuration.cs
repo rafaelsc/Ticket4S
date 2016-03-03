@@ -7,6 +7,9 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Text;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Ticket4S.Entity.User;
 
 namespace Ticket4S.Entity.Migrations
 {
@@ -22,6 +25,51 @@ namespace Ticket4S.Entity.Migrations
         {
             SeedGeo(context);
             SeedEventosExemplos(context);
+            SeedUser(context);
+        }
+
+        private void SeedUser(Ticket4SDbContext context)
+        {
+            var roleAdm = new IdentityRole { Id = "admin", Name = "Administrators" };
+            var roleCli = new IdentityRole { Id = "customer", Name = "Customers" };
+            context.Roles.AddOrUpdate(r => r.Id, roleAdm, roleCli);
+            SaveChanges(context);
+
+
+            var userAdminstrator = new User.User
+            {
+                Id = "91965C7B-78BF-400A-98A8-64BABAE18218",
+                UserName = "admin",
+                PasswordHash = (new PasswordHasher().HashPassword("admin123456")),
+                SecurityStamp = "",
+                Email = "mail@rafaelsc.net",
+                EmailConfirmed = true,
+                PhoneNumber = "5521988585900",
+                PhoneNumberConfirmed = true,
+                Roles =
+                {
+                    new IdentityUserRole() {RoleId = "admin", UserId = "91965C7B-78BF-400A-98A8-64BABAE18218"},
+                    new IdentityUserRole() {RoleId = "customer", UserId = "91965C7B-78BF-400A-98A8-64BABAE18218"},
+                },
+                Name = "Rafael Cordiero",
+                CPF = "65130660340", //Não é o Meu
+                DateOfBirth = new DateTime(1980,04,10),
+                Gender = Gender.Male,
+                Address =
+                    new Address()
+                    {
+                        Id = Guid.NewGuid(),
+                        StateId = "33",
+                        CityId = "3303302",
+                        DistrictId = "3303302XX",
+                        ZipCode = "24230000",
+                        Street = "Av. Roberto Silvera",
+                        StreetNumber = "000",
+                        StreetComplement = "Escritorio"
+                    }
+            };
+            context.Users.AddOrUpdate(u => u.Id, userAdminstrator);
+            SaveChanges(context);
         }
 
         private void SeedEventosExemplos(Ticket4SDbContext context)

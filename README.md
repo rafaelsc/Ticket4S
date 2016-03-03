@@ -20,11 +20,16 @@ E até me possibilitou de usar Libs que tinha pouca experiência, como xUnit, Se
 - xUnit (Test)
 - SpeckFlow (Test)
 - FluentAssertions (Test)
+- MOQ
+- EntityFramework MOQ
+- Hangfire (Jobs e Filas em segundo plano)
+- SimpleInjector (Injector de Dependencia)
 
-### Usando em Breve ###
-- Hangfire ou Akka
-- SimpleInjector ou Ninject
-- RX?
+### Desejo de Usar em Breve ###
+- Akka
+- RX
+- AutoFixture
+- T4MVC
 
 
 ---------
@@ -36,7 +41,7 @@ As compras com cartão de credito podem ser salvar de forma segura, mas nessa ve
 
 
 ## TODO ##
-- Camada de apresentação Web e de Serviços RESTiful
-- Mais Testes
+- Melhorar a apresentação do Site Web
+- Fazer uma camada API de Serviços RESTiful
 - ???
 - PROFIT!!!

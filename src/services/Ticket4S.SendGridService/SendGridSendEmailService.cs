@@ -25,7 +25,7 @@ namespace Ticket4S.SendGridService
         {
             Contract.Requires(emailData != null);
             Contract.Ensures(Contract.Result<Task>() != null);
-            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(emailData), emailData);
+            ValidatorHelper.ThrowesIfHasDataAnnotationError(nameof(emailData), emailData);
 
             Log.Information("Enviando de Email Pelo SendGrid");
 

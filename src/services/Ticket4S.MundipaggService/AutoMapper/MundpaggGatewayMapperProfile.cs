@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 using GatewayApiClient.DataContracts;
 using Ticket4S.Extensions;
@@ -20,7 +21,7 @@ namespace Ticket4S.MundipaggService.AutoMapper
 
             CreateMap<BillingAddress, GatewayApiClient.DataContracts.BillingAddress>();
 
-            CreateMap<BillingWithCreditCard, CreditCardTransaction>()
+            CreateMap<BillingWithNewCreditCard, CreditCardTransaction>()
                 .ForMember(dest => dest.AmountInCents, exp => exp.MapFrom(src => (long) (src.Value*100)))
                 .ForMember(dest => dest.Options, exp => exp.Ignore())
                 .ForMember(dest => dest.Recurrency, exp => exp.Ignore())
@@ -28,7 +29,17 @@ namespace Ticket4S.MundipaggService.AutoMapper
                 .ForMember(dest => dest.CreditCardOperation, exp => exp.Ignore())
                 .ForMember(dest => dest.TransactionReference, exp => exp.Ignore())
                 .ForMember(dest => dest.TransactionDateInMerchant, exp => exp.Ignore());
-                //.ForMember(dest => dest.CreditCard.BillingAddress, exp => exp.MapFrom(src => src.BillingAddress)); //TODO: Caso seja Requerido.
+            //.ForMember(dest => dest.CreditCard.BillingAddress, exp => exp.MapFrom(src => src.BillingAddress)); //TODO: Caso seja Requerido.
+
+            CreateMap<BillingWithSavedCreditCard, CreditCardTransaction>()
+                .ForMember(dest => dest.CreditCard, exp => exp.MapFrom(src => new CreditCard() {InstantBuyKey = Guid.Parse(src.IdOfSavedCardInTheGateway)}))
+                .ForMember(dest => dest.AmountInCents, exp => exp.MapFrom(src => (long)(src.Value * 100)))
+                .ForMember(dest => dest.Options, exp => exp.Ignore())
+                .ForMember(dest => dest.Recurrency, exp => exp.Ignore())
+                .ForMember(dest => dest.InstallmentCount, exp => exp.Ignore())
+                .ForMember(dest => dest.CreditCardOperation, exp => exp.Ignore())
+                .ForMember(dest => dest.TransactionReference, exp => exp.Ignore())
+                .ForMember(dest => dest.TransactionDateInMerchant, exp => exp.Ignore());
         }
     }
 }

@@ -21,6 +21,7 @@ using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using Ticket4S.Entity;
 using Ticket4S.Entity.User;
+using Ticket4S.Services.Purchase;
 
 namespace Ticket4S.Web.App_Start
 {
@@ -44,6 +45,10 @@ namespace Ticket4S.Web.App_Start
 
             container.RegisterSingleton<MapperConfiguration>(mapperConfig);
             container.RegisterSingleton<IMapper>(() => container.GetInstance<MapperConfiguration>().CreateMapper(container.GetInstance));
+
+            //////////////////////////////////////////////////////////////////////////////
+
+            container.Register<PurchaseService>(Lifestyle.Scoped);
 
             //////////////////////////////////////////////////////////////////////////////
 

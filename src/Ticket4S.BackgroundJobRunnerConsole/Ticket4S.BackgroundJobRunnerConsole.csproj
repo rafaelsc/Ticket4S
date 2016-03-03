@@ -147,6 +147,10 @@
       <Project>{50f496ed-7330-4f6f-a5c3-ce5a3a5638fe}</Project>
       <Name>Ticket4S.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ticket4S.Web\Ticket4S.Web.csproj">
+      <Project>{91cc27ed-e72f-4d91-994a-1f2119b83d03}</Project>
+      <Name>Ticket4S.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

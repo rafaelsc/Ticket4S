@@ -29,7 +29,7 @@ namespace Ticket4S.ServicesTests
         public void CobrancaNoCartaoComResultadoAprovado()
         {
             // Arrange
-            var billingData = new BillingWithCreditCard()
+            var billingData = new BillingWithNewCreditCard()
             {
                 Id = Guid.NewGuid(),
                 CreditCard =  new CreditCardInfo()
@@ -60,7 +60,7 @@ namespace Ticket4S.ServicesTests
         public void CobrancaNoCartaoComResultadoNaoAtorizado()
         {
             // Arrange
-            var billingData = new BillingWithCreditCard()
+            var billingData = new BillingWithNewCreditCard()
             {
                 Id = Guid.NewGuid(),
                 CreditCard = new CreditCardInfo()
@@ -91,7 +91,7 @@ namespace Ticket4S.ServicesTests
         public void CobrancaNoCartaoComFalhaDeComunicacao()
         {
             // Arrange
-            var billingData = new BillingWithCreditCard()
+            var billingData = new BillingWithNewCreditCard()
             {
                 Id = Guid.NewGuid(),
                 CreditCard = new CreditCardInfo()
@@ -122,7 +122,7 @@ namespace Ticket4S.ServicesTests
         public void CobrancaNoCartaoFaltandoSemPassarValor()
         {
             // Arrange
-            var billingData = new BillingWithCreditCard()
+            var billingData = new BillingWithNewCreditCard()
             {
                 Id = Guid.NewGuid(),
                 CreditCard = new CreditCardInfo()
@@ -148,7 +148,7 @@ namespace Ticket4S.ServicesTests
         public void CobrancaNoCartaoFaltandoDados1()
         {
             // Arrange
-            var billingData = new BillingWithCreditCard()
+            var billingData = new BillingWithNewCreditCard()
             {
                 Id = Guid.NewGuid(),
                 CreditCard = new CreditCardInfo()
@@ -180,7 +180,7 @@ namespace Ticket4S.ServicesTests
         public void CobrancaNoCartaoFaltandoDados2()
         {
             // Arrange
-            var billingData = new BillingWithCreditCard()
+            var billingData = new BillingWithNewCreditCard()
             {
                 Id = Guid.NewGuid(),
                 CreditCard = new CreditCardInfo()

@@ -16,15 +16,15 @@ namespace Ticket4S.CommonTest.Pagamento
             Log = log.ForContext<FailFakePaymentService>();
         }
 
-        public PaymentResult PayWithCreditCard(BillingWithCreditCard billingData)
+        public PaymentResult PayWithCreditCard(BillingWithCreditCardBase billingData)
         {
             Contract.Requires(billingData != null);
             Contract.Ensures(Contract.Result<PaymentResult>() != null);
-            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(billingData), billingData);
+            ValidatorHelper.ThrowesIfHasDataAnnotationError(nameof(billingData), billingData);
 
-            Log.Information("Fake: PagamentoService.PagarComCartaoDeCredito() => false");
+            Log.Information("Fake: PaymentService.PayWithCreditCard(BillingWithCreditCardBase) => false");
 
-            return new PaymentResult(false, Guid.NewGuid().ToString(), "FAKE - SIMULADO - Sumulacao Interna do Sistema", "");
+            return new PaymentResult(false, Guid.NewGuid().ToString(), "FAKE - SIMULADO - Sumulacao Interna do Sistema", "", null);
         }
     }
 }

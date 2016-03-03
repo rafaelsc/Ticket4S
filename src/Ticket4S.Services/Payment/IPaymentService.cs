@@ -6,6 +6,6 @@ namespace Ticket4S.Services.Payment
     public interface IPaymentService
     {
         [NotNull]
-        PaymentResult PayWithCreditCard([NotNull] BillingWithCreditCard billingData); //TODO: Implementar Async
+        PaymentResult PayWithCreditCard([NotNull] BillingWithCreditCardBase billingData); //TODO: Implementar Async
     }
 }

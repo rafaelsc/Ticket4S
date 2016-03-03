@@ -83,12 +83,15 @@
   <ItemGroup>
     <Compile Include="Email\ISendEmailService.cs" />
     <Compile Include="Email\Model\EMailToSend.cs" />
+    <Compile Include="ServiceMapperProfile.cs" />
     <Compile Include="Notification\IPurchaseAccomplishedNotifyService.cs" />
+    <Compile Include="Notification\Model\PurchaseDetails.cs" />
     <Compile Include="Notification\Model\RejectionReason.cs" />
     <Compile Include="Payment\IPaymentService.cs" />
     <Compile Include="Payment\Model\BillingModels.cs" />
     <Compile Include="Payment\Model\PaymentResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase\PurchaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ticket4S.Entity.Querys\Ticket4S.Entity.Querys.csproj">

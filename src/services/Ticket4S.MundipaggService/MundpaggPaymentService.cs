@@ -7,9 +7,11 @@ using AutoMapper;
 using GatewayApiClient;
 using GatewayApiClient.DataContracts;
 using Serilog;
+using Ticket4S.Entity;
 using Ticket4S.Services.Payment;
 using Ticket4S.Services.Payment.Model;
 using Ticket4S.Utils;
+using BillingAddress = GatewayApiClient.DataContracts.BillingAddress;
 
 namespace Ticket4S.MundipaggService
 {
@@ -24,15 +26,17 @@ namespace Ticket4S.MundipaggService
             Mapper = mapper;
         }
 
-        public PaymentResult PayWithCreditCard(BillingWithCreditCard billingData)
+        public PaymentResult PayWithCreditCard(BillingWithCreditCardBase billingData)
         {
             Contract.Requires(billingData != null);
             Contract.Ensures(Contract.Result<PaymentResult>() != null);
-            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(billingData), billingData);
+            ValidatorHelper.ThrowesIfHasDataAnnotationError(nameof(billingData), billingData);
 
             Log.Information("Iniciada cobrança no Cartao de Credito");
 
             var mundpaggCreditCardTransaction = Mapper.Map<CreditCardTransaction>(billingData);
+            mundpaggCreditCardTransaction.CreditCard.BillingAddress = Mapper.Map<BillingAddress>((billingData as BillingWithNewCreditCard)?.BillingAddress);
+
             var requestData = new CreateSaleRequest()
             {
                 CreditCardTransactionCollection = new Collection<CreditCardTransaction>(new[] { mundpaggCreditCardTransaction }),
@@ -58,8 +62,12 @@ namespace Ticket4S.MundipaggService
                 var orderId = response.Response?.OrderResult?.OrderKey.ToString();
                 var message = GetMessage(errorWasValidation: orderGenerated == false, gatewayResponse: response.Response); //TODO
                 var rawData = response.RawResponse;
+                var savedCc = response.Response?.CreditCardTransactionResultCollection.SingleOrDefault()?.CreditCard;
 
-                var result = new PaymentResult(succeful, orderId, message, rawData);
+
+                var savedCreditCard = savedCc == null ? null : new SavedCreditCard(savedCc.InstantBuyKey.ToString(), Mapper.Map<CreditCardBrand>(savedCc.CreditCardBrand), savedCc.MaskedCreditCardNumber);
+                var result = new PaymentResult(succeful, orderId, message, rawData, savedCreditCard);
+
                 Log.Debug("Resultado da Cobranca, {ResultadoDoPagamento}", result);
 
                 if (result.PaymentBilledSuccessful)
@@ -76,7 +84,7 @@ namespace Ticket4S.MundipaggService
             catch (Exception ex)
             {
                 Log.Error(ex, "Erro GRAVE INTERNO durante a cobrança de cartão de credito. Cobrança não realizada. {Exception}", ex);
-                return new PaymentResult(false, null, "ERRO Interno do Sistema", ex.Message);
+                return new PaymentResult(false, null, "ERRO Interno do Sistema", ex.Message, null);
             }
         }
 

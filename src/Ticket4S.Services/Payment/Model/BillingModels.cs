@@ -1,29 +1,40 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security;
-using JetBrains.Annotations;
 using Ticket4S.Entity;
-using Ticket4S.Entity.User;
 
 namespace Ticket4S.Services.Payment.Model
 {
-    public class BillingWithCreditCard
+    public abstract class BillingWithCreditCardBase
     {
         [Key]
         [Required]
         public Guid Id { get; set; } = Guid.NewGuid();
 
+        [DataType(DataType.Currency)]
+        [Required, Range(0.01d, 1000000d)] //1 Milhao
+        public decimal? Value { get; set; }
+
+        public override string ToString() => $"Id: {Id}, Valor: {Value}";
+    }
+
+    public class BillingWithNewCreditCard : BillingWithCreditCardBase
+    {
         [Required]
         public CreditCardInfo CreditCard { get; set; }
 
         public BillingAddress BillingAddress { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Required, Range(0.01d, 1000000d)] //1 Milhao
-        public decimal? Value { get; set; }
-
-
         public override string ToString() => $"Id: {Id}, CreditCard: {CreditCard}, Valor: {Value}";
+    }
+    
+    public class BillingWithSavedCreditCard : BillingWithCreditCardBase
+    {
+        [Required]
+        public virtual string IdOfSavedCardInTheGateway { get; set; }
+
+
+        public override string ToString() => $"Id: {Id}, IdOfSavedCardInTheGateway: {IdOfSavedCardInTheGateway}, Valor: {Value}";
     }
 
     public class CreditCardInfo

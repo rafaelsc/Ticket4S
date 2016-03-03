@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using Serilog;
+using Ticket4S.Entity;
 using Ticket4S.Services.Payment;
 using Ticket4S.Services.Payment.Model;
 using Ticket4S.Utils;
@@ -16,15 +17,15 @@ namespace Ticket4S.CommonTest.Pagamento
             Log = log.ForContext<SuceessFakePaymentService>();
         }
 
-        public PaymentResult PayWithCreditCard(BillingWithCreditCard billingData)
+        public PaymentResult PayWithCreditCard(BillingWithCreditCardBase billingData)
         {
             Contract.Requires(billingData != null);
             Contract.Ensures(Contract.Result<PaymentResult>() != null);
-            ValidatorHelper.ThrowesIfHasDataAnnotationErro(nameof(billingData), billingData);
+            ValidatorHelper.ThrowesIfHasDataAnnotationError(nameof(billingData), billingData);
 
-            Log.Information("Fake: PagamentoService.PagarComCartaoDeCredito() = true");
+            Log.Information("Fake: PaymentService.PayWithCreditCard(BillingWithCreditCardBase) = true");
 
-            return new PaymentResult(true, Guid.NewGuid().ToString(), "FAKE - SIMULADO - Sumulacao Interna do Sistema", "");
+            return new PaymentResult(true, Guid.NewGuid().ToString(), "FAKE - SIMULADO - Sumulacao Interna do Sistema", "", new SavedCreditCard(Guid.NewGuid().ToString(), CreditCardBrand.AndarAki, "****1111"));
         }
     }
 }

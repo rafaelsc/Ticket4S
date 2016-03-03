@@ -17,11 +17,11 @@ namespace Ticket4S.Entity
         public virtual DbSet<EventPlace> EventsPlaces { get; set; }
 
         //Compra
-        public virtual DbSet<PurchaseOrder> PedidosDeCompras { get; set; }
+        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
 
         //GatwayPagemento
-        public virtual DbSet<SavedCreditCard> CartaoDeCreditoSalvo { get; set; }
-        public virtual DbSet<TransactionHistory> HistoricoDeTransacoes { get; set; }
+        public virtual DbSet<SavedCreditCard> SavedCreditCards { get; set; }
+        public virtual DbSet<TransactionHistory> TransactionHistory { get; set; }
         
         //User
         public virtual DbSet<Address> Addresses { get; set; }

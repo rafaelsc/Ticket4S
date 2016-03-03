@@ -70,8 +70,8 @@
     <Compile Include="Event\Event.cs" />
     <Compile Include="Event\EventPlace.cs" />
     <Compile Include="Event\EventTicketType.cs" />
-    <Compile Include="GatewayPagamento\SavedCreditCard.cs" />
-    <Compile Include="GatewayPagamento\TransactionHistory.cs" />
+    <Compile Include="GatewayPayment\SavedCreditCard.cs" />
+    <Compile Include="GatewayPayment\TransactionHistory.cs" />
     <Compile Include="Geo\City.cs" />
     <Compile Include="Geo\District.cs" />
     <Compile Include="Geo\State.cs" />

@@ -27,6 +27,9 @@ namespace Ticket4S.Entity.Purchase
         public virtual string BuyerUserId { get; set; }
         public virtual User.User BuyerUser { get; set; }
 
+        [Required]
+        public virtual bool UserRequestToSaveCreditCard { get; set; }
+
         [Index]
         [ForeignKey(nameof(BoughtEvent))]
         public virtual Guid? BoughtEventId { get; set; }
@@ -52,6 +55,9 @@ namespace Ticket4S.Entity.Purchase
         public virtual DateTimeOffset ChangedAt { get; set; }
         [Timestamp, Column("_rowVersion")]
         public virtual byte[] RowVersion { get; set; }
+
+
+        public override string ToString() => $"Id: {Id}, OrderDateTime: {OrderDateTime}, BuyerUserId: {BuyerUserId}, BoughtTicketId: {BoughtTicketId}, Condition: {Condition}";
     }
 
     public enum Condition

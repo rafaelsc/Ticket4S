@@ -23,5 +23,8 @@ namespace Ticket4S.Entity.GatewayPayment
         [ForeignKey(nameof(User))]
         public virtual string UserId { get; set; }
         public virtual User.User User { get; set; }
+
+        [Column("_createdAt")]
+        public virtual DateTimeOffset CreatedAt { get; set; }
     }
 }

@@ -1,41 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Ticket4S.Entity;
 using Ticket4S.Entity.Querys;
+using Ticket4S.Web.ViewModels;
 
 namespace Ticket4S.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public MapperConfiguration MapperConfig { get; }
         private Ticket4SDbContext Db { get; }
 
-        public HomeController(Ticket4SDbContext db)
+        public HomeController(Ticket4SDbContext db, MapperConfiguration mapperConfig)
         {
+            MapperConfig = mapperConfig;
             Db = db;
         }
 
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
-            var events = Db.Event.ListAvailableEventsWithTicket().ToList();
+            var events = await Db.Event.ListAvailableEventsWithTicket().ProjectTo<EventViewModel>(MapperConfig).ToListAsync();
             return View(events);
         }
 
-
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+       
     }
 }

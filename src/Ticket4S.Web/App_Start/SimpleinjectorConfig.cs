@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -25,7 +26,7 @@ namespace Ticket4S.Web.App_Start
 {
     public static class SimpleinjectorConfig
     {
-        public static Container Configure(IAppBuilder app)
+        public static Container Configure(IAppBuilder app, MapperConfiguration mapperConfig)
         {
             // Create the container as usual.
             var container = new Container();
@@ -38,9 +39,14 @@ namespace Ticket4S.Web.App_Start
 
             container.RegisterPerWebRequest<Ticket4SDbContext>();
             container.RegisterPerWebRequest<DbContext>(()=> container.GetInstance<Ticket4SDbContext>());
-            
+
             //////////////////////////////////////////////////////////////////////////////
-            
+
+            container.RegisterSingleton<MapperConfiguration>(mapperConfig);
+            container.RegisterSingleton<IMapper>(() => container.GetInstance<MapperConfiguration>().CreateMapper(container.GetInstance));
+
+            //////////////////////////////////////////////////////////////////////////////
+
             container.RegisterPerWebRequest<IdentityFactoryOptions<ApplicationUserManager>>(() => new IdentityFactoryOptions<ApplicationUserManager>()
                 {
                     DataProtectionProvider = app.GetDataProtectionProvider()
@@ -64,11 +70,11 @@ namespace Ticket4S.Web.App_Start
             container.RegisterMvcIntegratedFilterProvider();
 
             //////////////////////////////////////////////////////////////////////////////
-
+#if DEBUG
             container.Verify();
-
+#endif
             //////////////////////////////////////////////////////////////////////////////
-            
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
             return container;

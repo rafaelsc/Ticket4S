@@ -1,7 +1,42 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Sobre";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<h1>Ticket4S</h1>
+<p>Um ensaio de um projeto Web para um site ficcional de venda de Ingressos para eventos que não existem e nunca irão existir.</p>
+<p>Esse projeto é uma demonstração de uma arquitetura <strong>S.O.L.I.D.</strong> aplicada ao .Net num sistema simples de venda de ingressos.</p>
+<p>
+    Visando melhorar meus conhecimentos em meios de pagamentos digitais, aperfeiçoando meus conhecimentos e permitindo demostrar meu código para quem possa interessar, deixando um sistema completo como portfólio na internet.
+    E até me possibilitou de usar Libs que tinha pouca experiência, como xUnit, Serilog e SpeckFlow.
+</p>
+<h3>Usando</h3>
+<ul>
+    <li>C# 6</li>
+    <li>Asp.Net 4.6</li>
+    <li>Asp.Net MVC 5 </li>
+    <li>Asp.Net WebApi 5 (REST)</li>
+    <li>Asp.Net Identity 2 (Autenticação)</li>
+    <li>EntityFramework 6 (ORM)</li>
+    <li>EntityFramework 6 Migrations</li>
+    <li>Serilog (Logging)</li>
+    <li>xUnit (Test)</li>
+    <li>SpeckFlow (Test)</li>
+    <li>FluentAssertions (Test)</li>
+</ul>
+<h3>Usando em Breve</h3>
+<ul>
+    <li>Hangfire ou Akka</li>
+    <li>SimpleInjector ou Ninject</li>
+    <li>RX?</li>
+</ul>
+<hr />
+<h2>Algumas Premissas</h2>
+<p>No momento o sistema considera que exista uma quantidade infinita de Ingressos disponíveis para um Evento. (Não existe um controle de Lotação, quantidades disponibilizadas ou controle de Race Conditions)</p>
+<p>As compras com cartão de credito podem ser salvar de forma segura, mas nessa versão considero que o cartão salvo tem uma validade infinita. (O sistema nunca pede um novo cartão quando o antigo expira)</p>
+<h2>TODO</h2>
+<ul>
+    <li>Camada de apresentação Web e de Serviços RESTiful</li>
+    <li>Mais Testes</li>
+    <li>???</li>
+    <li>PROFIT!!!</li>
+</ul>

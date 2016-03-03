@@ -14,7 +14,8 @@ namespace Ticket4S.Web
 
             ConfigureAuth(app);
 
-            var container = SimpleinjectorConfig.Configure(app);
+            var mapper = AutoMapperConfig.Config();
+            var container = SimpleinjectorConfig.Configure(app, mapper);
             HangfireConfig.Configure(app, container);
         }
     }

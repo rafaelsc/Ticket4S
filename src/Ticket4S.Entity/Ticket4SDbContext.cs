@@ -12,6 +12,8 @@ namespace Ticket4S.Entity
     {
         //Evento
         public virtual DbSet<Event.Event> Event { get; set; }
+        public virtual DbSet<Event.EventTicketType> EventTicketTypes { get; set; }
+
         public virtual DbSet<EventPlace> EventsPlaces { get; set; }
 
         //Compra

@@ -1,0 +1,27 @@
+﻿@model EventTicketTypeWithEventViewModel
+@{
+    ViewBag.Title = "Comprar Ingresso";
+}
+
+<h1>Comprar Ingresso</h1>
+
+<div>
+    <h2>Evento: @Model.EventName</h2>
+    <h3>Aonde: @Model.EventPlace.ToString()</h3>
+</div>
+
+<div>
+    <h2>Ingresso</h2>
+    <h3>@Model.Name</h3>
+
+    <h4>Valor R$ @Model.Value</h4>
+</div>
+
+@using (Html.BeginForm("Comprar"))
+{
+    
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

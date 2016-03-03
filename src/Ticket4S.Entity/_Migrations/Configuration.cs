@@ -29,7 +29,7 @@ namespace Ticket4S.Entity.Migrations
             var evento1 = new Event.Event
             {
                 Id = Guid.Parse("756FEF9D-25A6-4418-9910-5C5C458C94CA"),
-                Name = "Show dos 'The Pinheads'",
+                Name = "Show dos 'The Pinheads' no Rio",
                 ShortName = "The Pinheads",
                 
                 Active = true,
@@ -72,7 +72,7 @@ namespace Ticket4S.Entity.Migrations
             var evento2 = new Event.Event
             {
                 Id = Guid.Parse("C5A8E294-464F-40C5-B2A6-A4BBFF5CB825"),
-                Name = "Ultimo Show dos 'The Pinheads'",
+                Name = "Ultimo Show dos 'The Pinheads' em São Paulo",
                 ShortName = "The Pinheads em SP",
 
                 Active = true,

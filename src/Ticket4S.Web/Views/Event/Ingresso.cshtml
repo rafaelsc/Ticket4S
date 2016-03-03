@@ -1,4 +1,5 @@
-﻿@model EventTicketTypeWithEventViewModel
+﻿@using Microsoft.AspNet.Identity
+@model EventTicketTypeWithEventViewModel
 @{
     ViewBag.Title = "Comprar Ingresso";
 }
@@ -17,10 +18,41 @@
     <h4>Valor R$ @Model.Value</h4>
 </div>
 
-@using (Html.BeginForm("Comprar"))
+@if (Request.IsAuthenticated)
 {
-    
+    using (Html.BeginForm("Comprar", "Event", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        
+        @Html.Hidden("BoughtTicketId", Model.Id)
+
+        <hr/>
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+        <H2>Dados para Compra</H2>
+
+        @Html.Partial("_Order", new OrderViewModel())
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Comprar" />
+            </div>
+        </div>
+    }
 }
+else
+{
+    <h3>Para comprar o Ingresso, se registre. Se já tem conta loge-se</h3>
+    <ul class="">
+        <li>@Html.ActionLink("Registrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Logar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

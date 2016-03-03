@@ -1,0 +1,52 @@
+﻿@using Ticket4S.Entity
+@model OrderViewModel
+
+
+<div class="form-group">
+    @Html.LabelFor(m => m.HolderName, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.HolderName, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.CreditCardNumber, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.CreditCardNumber, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.SecurityCode, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.SecurityCode, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.ExpMonth, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.ExpMonth, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.ExpYear, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.ExpYear, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.CreditCardBrand, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m.CreditCardBrand, Enum.GetValues(typeof(CreditCardBrand)).Cast<CreditCardBrand>().Select(v => new SelectListItem() {Value = v.ToString(), Text = v.ToString()}).ToList())
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.UserRequestToSaveCreditCard, new {@class = "col-md-2 control-label"})
+    <div class="col-md-10">
+        @Html.CheckBoxFor(m=> m.UserRequestToSaveCreditCard)
+    </div>
+</div>

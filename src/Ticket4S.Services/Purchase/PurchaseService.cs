@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -33,6 +34,15 @@ namespace Ticket4S.Services.Purchase
             Db = db;
         }
 
+        public void PurchaseTicket(Guid purchaseOrderId, BillingWithNewCreditCard billingData)
+        {
+            AsyncHelpers.RunSync( () => PurchaseTicketAsync(purchaseOrderId, billingData) );
+        }
+        public void PurchaseTicket(Guid purchaseOrderId, BillingWithSavedCreditCard billingData)
+        {
+            AsyncHelpers.RunSync(() => PurchaseTicketAsync(purchaseOrderId, billingData));
+        }
+
         public async Task PurchaseTicketAsync(Guid purchaseOrderId, BillingWithCreditCardBase billingData)
         {
             Contract.Requires(billingData != null);
@@ -44,6 +54,10 @@ namespace Ticket4S.Services.Purchase
             {
                 Log.Information("Ordem Já processada. Pulando. {Order}", order);
                 return;
+            }
+            if(order.BuyerUser == null)
+            {
+                order.BuyerUser = Db.Users.Find(order.Id);
             }
             
             await PurchaseTicketInternalAsync(order, billingData);

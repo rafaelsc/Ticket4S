@@ -14,8 +14,8 @@ namespace Ticket4S.MundipaggService
         protected override void Configure()
         {
             CreateMap<CreditCardInfo, CreditCard>()
-                .ForMember(dest => dest.CreditCardNumber, exp => exp.MapFrom(src => src.CreditCardNumber.ToUnsecureString()))
-                .ForMember(dest => dest.SecurityCode, exp => exp.MapFrom(src => src.SecurityCode.ToUnsecureString()))
+                //.ForMember(dest => dest.CreditCardNumber, exp => exp.MapFrom(src => src.CreditCardNumber.ToUnsecureString()))
+                //.ForMember(dest => dest.SecurityCode, exp => exp.MapFrom(src => src.SecurityCode.ToUnsecureString()))
                 .ForMember(dest => dest.InstantBuyKey, exp => exp.Ignore())
                 .ForMember(dest => dest.BillingAddress, exp => exp.Ignore());
 

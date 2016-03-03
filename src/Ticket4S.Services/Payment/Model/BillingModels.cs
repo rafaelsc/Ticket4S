@@ -9,7 +9,7 @@ namespace Ticket4S.Services.Payment.Model
     {
         [Key]
         [Required]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         [DataType(DataType.Currency)]
         [Required, Range(0.01d, 1000000d)] //1 Milhao
@@ -44,10 +44,12 @@ namespace Ticket4S.Services.Payment.Model
 
         [Required]
         [DataType(DataType.CreditCard)]
-        public SecureString CreditCardNumber { get; set; }
+        public String CreditCardNumber { get; set; }
+        //public SecureString CreditCardNumber { get; set; }
 
         [Required]
-        public SecureString SecurityCode { get; set; }
+        public String SecurityCode { get; set; }
+        //public SecureString SecurityCode { get; set; }
 
         [Required]
         public int ExpMonth { get; set; }

@@ -1,5 +1,8 @@
 using AutoMapper;
 using Ticket4S.Entity.Event;
+using Ticket4S.Entity.Purchase;
+using Ticket4S.Extensions;
+using Ticket4S.Services.Payment.Model;
 using Ticket4S.Web.Controllers;
 using Ticket4S.Web.ViewModels;
 
@@ -19,6 +22,11 @@ namespace Ticket4S.Web.AutoMapper
                 .ForMember(dest=> dest.EventPlace, e=> e.MapFrom(srv=> srv.Event.EventPlace));
 
             CreateMap<EventPlace, EventPlaceViewModel>();
+
+            CreateMap<OrderViewModel, CreditCardInfo>();
+            //.ForMember(dest => dest.CreditCardNumber, e=>e.MapFrom(src=>src.CreditCardNumber.ToSecureString()))
+            //.ForMember(dest => dest.SecurityCode, e => e.MapFrom(src => src.SecurityCode.ToSecureString()));
+
         }
     }
 }

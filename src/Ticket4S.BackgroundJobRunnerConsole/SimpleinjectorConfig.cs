@@ -31,7 +31,7 @@ namespace Ticket4S.BackgroundJobRunner
             container.Register<IPurchaseAccomplishedNotifyService, PurchaseAccomplishedEmailNotifyService>(Lifestyle.Scoped);
             container.Register<ISendEmailService, SendGridSendEmailService>(Lifestyle.Scoped);
 
-            container.Register<ILogger>(() => Log.Logger);
+            container.Register<ILogger>(() => Log.Logger, Lifestyle.Scoped);
             //container.RegisterConditional(typeof(ILogger), c => Log.Logger, Lifestyle.Transient, c => true );
 
             container.RegisterSingleton<MapperConfiguration>(mapperConfig);

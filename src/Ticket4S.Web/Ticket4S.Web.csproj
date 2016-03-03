@@ -400,6 +400,14 @@
     <Content Include="Scripts\jquery-2.2.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\services\Ticket4S.MundipaggService\Ticket4S.MundipaggService.csproj">
+      <Project>{12378ef5-58a3-4ac2-bf8d-df297f5940dc}</Project>
+      <Name>Ticket4S.MundipaggService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\services\Ticket4S.SendGridService\Ticket4S.SendGridService.csproj">
+      <Project>{67dbc4ef-0628-464c-a967-6127f399e612}</Project>
+      <Name>Ticket4S.SendGridService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ticket4S.Entity.Querys\Ticket4S.Entity.Querys.csproj">
       <Project>{dce852af-8631-4d76-b331-dcff35176412}</Project>
       <Name>Ticket4S.Entity.Querys</Name>

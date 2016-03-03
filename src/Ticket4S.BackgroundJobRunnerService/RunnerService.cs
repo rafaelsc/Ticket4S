@@ -1,6 +1,9 @@
 ﻿using System.ServiceProcess;
 using Hangfire;
 using Ticket4S.BackgroundJobRunner;
+using Ticket4S.Web;
+using HangfireConfig = Ticket4S.BackgroundJobRunner.HangfireConfig;
+using SerilogConfig = Ticket4S.BackgroundJobRunner.SerilogConfig;
 
 namespace Ticket4S.BackgroundJobRunnerService
 {
@@ -16,7 +19,8 @@ namespace Ticket4S.BackgroundJobRunnerService
         protected override void OnStart(string[] args)
         {
             SerilogConfig.Configure();
-            var container = SimpleinjectorConfig.Configure();
+            var mapper = AutoMapperConfig.Config();
+            var container = SimpleinjectorConfig.Configure(mapper);
             HangfireConfig.Configure(container);
 
             _server = new BackgroundJobServer();

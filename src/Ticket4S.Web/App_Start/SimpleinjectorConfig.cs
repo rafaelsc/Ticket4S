@@ -15,12 +15,18 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
+using Serilog;
 using SimpleInjector;
 using SimpleInjector.Advanced;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using Ticket4S.Entity;
 using Ticket4S.Entity.User;
+using Ticket4S.MundipaggService;
+using Ticket4S.SendGridService;
+using Ticket4S.Services.Email;
+using Ticket4S.Services.Notification;
+using Ticket4S.Services.Payment;
 using Ticket4S.Services.Purchase;
 
 namespace Ticket4S.Web.App_Start
@@ -48,7 +54,12 @@ namespace Ticket4S.Web.App_Start
 
             //////////////////////////////////////////////////////////////////////////////
 
+            container.Register<ILogger>(() => Log.Logger, Lifestyle.Scoped);
+
             container.Register<PurchaseService>(Lifestyle.Scoped);
+            container.Register<IPaymentService, MundpaggPaymentService>(Lifestyle.Scoped);
+            container.Register<IPurchaseAccomplishedNotifyService, PurchaseAccomplishedEmailNotifyService>(Lifestyle.Scoped);
+            container.Register<ISendEmailService, SendGridSendEmailService>(Lifestyle.Scoped);
 
             //////////////////////////////////////////////////////////////////////////////
 

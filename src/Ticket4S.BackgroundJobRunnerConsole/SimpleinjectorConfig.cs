@@ -1,4 +1,6 @@
 using System.Data.Entity;
+using AutoMapper;
+using Serilog;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
 using Ticket4S.Entity;
@@ -13,7 +15,7 @@ namespace Ticket4S.BackgroundJobRunner
 {
     public static class SimpleinjectorConfig
     {
-        public static Container Configure()
+        public static Container Configure(MapperConfiguration mapperConfig)
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new ExecutionContextScopeLifestyle();
@@ -28,11 +30,17 @@ namespace Ticket4S.BackgroundJobRunner
             container.Register<IPaymentService, MundpaggPaymentService>(Lifestyle.Scoped);
             container.Register<IPurchaseAccomplishedNotifyService, PurchaseAccomplishedEmailNotifyService>(Lifestyle.Scoped);
             container.Register<ISendEmailService, SendGridSendEmailService>(Lifestyle.Scoped);
+
+            container.Register<ILogger>(() => Log.Logger);
+            //container.RegisterConditional(typeof(ILogger), c => Log.Logger, Lifestyle.Transient, c => true );
+
+            container.RegisterSingleton<MapperConfiguration>(mapperConfig);
+            container.RegisterSingleton<IMapper>(() => container.GetInstance<MapperConfiguration>().CreateMapper(container.GetInstance));
             
             //////////////////////////////////////////////////////////////////////////////
-
+#if DEBUG
             container.Verify();
-
+#endif
             return container;
         }
     }

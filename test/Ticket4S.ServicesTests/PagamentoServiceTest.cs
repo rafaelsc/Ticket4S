@@ -5,7 +5,6 @@ using Ticket4S.CommonTest;
 using Ticket4S.Entity;
 using Ticket4S.Extensions;
 using Ticket4S.MundipaggService;
-using Ticket4S.MundipaggService.AutoMapper;
 using Ticket4S.Services.Payment;
 using Ticket4S.Services.Payment.Model;
 using Xunit;
